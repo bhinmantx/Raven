@@ -1,6 +1,5 @@
 package raven.game.interfaces;
 
-import raven.game.RavenGame;
 import raven.game.RavenObject;
 import raven.game.RavenSensoryMemory;
 import raven.game.RavenSteering;
@@ -20,7 +19,7 @@ public interface IRavenBot {
 	public int health();
 	public RavenWeaponSystem getWeaponSys();
 	public int ID();
-	public RavenGame getWorld();
+	public IRavenGame getWorld();
 	public boolean canWalkBetween(Vector2D pos, Vector2D pos2);
 	public boolean canWalkTo(Vector2D targetPos);
 	public void tag();

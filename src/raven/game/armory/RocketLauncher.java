@@ -97,18 +97,18 @@ public class RocketLauncher extends RavenWeapon {
 	}
 
 	@Override
-	public void ShootAt(Vector2D position){
-		if (getRoundsRemaining() > 0 && timeUntilAvailable <= 0)
-		{
+	public boolean ShootAt(Vector2D position){
+		if (getRoundsRemaining() > 0 && timeUntilAvailable <= 0) {
 			//fire off a rocket!
 			getOwner().getWorld().addRocket(getOwner(), position);
 			decrementRoundsLeft();
 			UpdateTimeWeaponIsNextAvailable();
-
 			//add a trigger to the game so that the other bots can hear this shot
 			//(provided they are within range)
 			getOwner().getWorld().getMap().addSoundTrigger(getOwner(), RavenScript.getDouble("RocketLauncher_SoundRange"));
+			return true;
 		}
+		else return false;
 	}
 
 	@Override

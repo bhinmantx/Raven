@@ -4,17 +4,17 @@ import java.awt.event.ComponentListener;
 
 import raven.edit.graph.GraphBuilder;
 import raven.edit.tools.EditorTool;
-import raven.game.RavenMap;
+import raven.game.IRavenMap;
 
 public interface EditorViewDelegate extends ComponentListener {
 	public EditorView getView();
-	public RavenMap getLevel();
+	public IRavenMap getLevel();
 
 	public boolean doNewLevel();
 	public boolean doSave();
 	public boolean doOpen();
 	
-	public void changeLevel(RavenMap level);
+	public void changeLevel(IRavenMap level);
 	
 	public void makeDirty();
 	public void changeTool(EditorTool selectTool);

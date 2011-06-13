@@ -3,6 +3,7 @@ package raven.game;
 import java.util.ArrayList;
 
 import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.IRavenGame;
 import raven.game.interfaces.IRavenTargetingSystem;
 import raven.game.messaging.Dispatcher;
 import raven.game.messaging.RavenMessage;
@@ -26,7 +27,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 	private Status status;
 
 	/** a pointer to the world data */
-	private RavenGame world;
+	private IRavenGame world;
 
 	/**
 	 * this object handles the arbitration and processing of high level goals
@@ -182,7 +183,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 	// ////////////////
 	// Pulic methods
 
-	public RavenBot(RavenGame world, Vector2D position) {
+	public RavenBot(IRavenGame world, Vector2D position) {
 		super(position,
 				RavenScript.getDouble("Bot_Scale"),
 				new Vector2D(0, 0),
@@ -688,7 +689,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 
 	// Generic accessors
 
-	public RavenGame getWorld() {
+	public IRavenGame getWorld() {
 		return world;
 	}
 

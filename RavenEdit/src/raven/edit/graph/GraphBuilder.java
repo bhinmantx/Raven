@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import raven.game.IRavenMap;
 import raven.game.RavenBot;
-import raven.game.RavenMap;
 import raven.game.interfaces.IRavenBot;
 import raven.game.navigation.NavGraphEdge;
 import raven.game.navigation.NavGraphNode;
@@ -19,13 +19,13 @@ import raven.script.RavenScript;
 
 public class GraphBuilder {
 
-	private RavenMap level;
+	private IRavenMap level;
 	
 	protected double nodeSpacing = RavenScript.getDouble("DefaultNodeSpacing");
 	protected double maxEdgeLength = RavenScript.getDouble("DefaultMaxEdgeLength");
 	protected double nodeMargin = RavenScript.getDouble("NodeMargin");
 
-	public GraphBuilder(RavenMap level) {
+	public GraphBuilder(IRavenMap level) {
 		this.setLevel(level);
 	}
 	
@@ -134,6 +134,6 @@ public class GraphBuilder {
 		rebuild();
 	}
 
-	public void setLevel(RavenMap level) { this.level = level; }
-	public RavenMap getLevel() { return level; }
+	public void setLevel(IRavenMap level) { this.level = level; }
+	public IRavenMap getLevel() { return level; }
 }

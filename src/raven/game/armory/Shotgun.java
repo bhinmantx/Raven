@@ -86,34 +86,28 @@ public class Shotgun extends RavenWeapon {
 	}
 
 	@Override
-	public void ShootAt(Vector2D position){
-		if (getRoundsRemaining() > 0 && timeUntilAvailable <= 0)
-		{
+	public boolean ShootAt(Vector2D position){
+		if (getRoundsRemaining() > 0 && timeUntilAvailable <= 0) {
 			//a shotgun cartridge contains lots of tiny metal balls called pellets. 
 			//Therefore, every time the shotgun is discharged we have to calculate
 			//the spread of the pellets and add one for each trajectory
-			for (int b = 0; b < numBallsInShell; ++b)
-			{
+			for (int b = 0; b < numBallsInShell; ++b) {
 				//determine deviation from target using a bell curve type distribution
-
 				double deviation = RandUtils.RandInRange(0, spread) + RandUtils.RandInRange(0, spread) - spread;
-
 				Vector2D AdjustedTarget = position.sub(getOwner().pos());
-
 				//rotate the target vector by the deviation
 				Transformations.Vec2DRotateAroundOrigin(AdjustedTarget, deviation);
 				//add a pellet to the game world
 				getOwner().getWorld().addShotGunPellet(getOwner(), AdjustedTarget.add(getOwner().pos()));
 			}
-
 			decrementRoundsLeft();
-
 			UpdateTimeWeaponIsNextAvailable();
-
 			//add a trigger to the game so that the other bots can hear this shot
 			//(provided they are within range)
 			getOwner().getWorld().getMap().addSoundTrigger(getOwner(), RavenScript.getDouble("ShotGun_SoundRange"));
+			return true;
 		}
+		else return false;
 	}
 
 	@Override

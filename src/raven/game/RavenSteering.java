@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Vector;
 
 import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.IRavenGame;
 import raven.math.Geometry;
 import raven.math.Transformations;
 import raven.math.Vector2D;
@@ -51,7 +52,7 @@ public class RavenSteering {
 
 	private RavenBot ravenBot;
 	/** the world data */
-	private RavenGame world;
+	private IRavenGame world;
 
 	/** the steering force created by the combined effect of all the selected
 	 * behaviors */
@@ -400,7 +401,7 @@ public class RavenSteering {
 	}
 
 
-	public RavenSteering(RavenGame world, RavenBot ravenBot) {
+	public RavenSteering(IRavenGame world, RavenBot ravenBot) {
 
 		this.world = world;
 		this.ravenBot = ravenBot;

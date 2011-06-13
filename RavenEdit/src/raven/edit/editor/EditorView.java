@@ -24,14 +24,14 @@ import javax.swing.KeyStroke;
 import raven.edit.editor.actions.*;
 import raven.edit.editor.actions.menu.*;
 import raven.edit.tools.EditorTool;
+import raven.game.IRavenMap;
 import raven.game.RavenBot;
-import raven.game.RavenMap;
 import raven.game.interfaces.IRavenBot;
 import raven.game.triggers.Trigger;
 import raven.math.Vector2D;
 
 public class EditorView extends JFrame implements ViewportDelegate {
-	private RavenMap level;
+	private IRavenMap level;
 	private EditorViewDelegate delegate;
 	private Viewport viewport;
 	private JLabel statusBar;
@@ -60,7 +60,7 @@ public class EditorView extends JFrame implements ViewportDelegate {
 	private SetMaxGraphEdgeLengthAction edgeLengthAction;
 	
 	
-	public EditorView(RavenMap theLevel) {
+	public EditorView(IRavenMap theLevel) {
 		level = theLevel;
 	}
 	
@@ -387,11 +387,11 @@ public class EditorView extends JFrame implements ViewportDelegate {
 	////////////////
 	// Accessors
 	
-	public synchronized RavenMap getLevel() {
+	public synchronized IRavenMap getLevel() {
 		return level;
 	}
 
-	public synchronized void setLevel(RavenMap level) {
+	public synchronized void setLevel(IRavenMap level) {
 		this.level = level;
 		viewport.setLevel(level);
 	}

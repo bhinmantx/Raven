@@ -32,9 +32,9 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
 
-import raven.game.RavenGame;
 import raven.game.RavenObject;
 import raven.game.RavenUserOptions;
+import raven.game.interfaces.IRavenGame;
 import raven.math.Vector2D;
 import raven.utils.Log;
 import raven.utils.Log.Level;
@@ -49,12 +49,12 @@ public class RavenUI extends JFrame implements KeyListener, MouseListener, Compo
 	private int height = 700;
 	private int framerate = 60;
 
-	private RavenGame game;
+	private IRavenGame game;
 	private KeyState keys;
 	
 	private Action loadLevelAction;
 	
-	public RavenUI(RavenGame game) {
+	public RavenUI(IRavenGame game) {
 		super("Raven");
 		
 		Log.info("gui", "Initializing...");

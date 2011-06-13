@@ -8,6 +8,7 @@ import junit.framework.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import raven.game.IRavenMap;
 import raven.game.RavenMap;
 import raven.utils.MapSerializer;
 
@@ -38,7 +39,7 @@ public class MapSerializerTests {
 	 */
 	@Test
 	public void DeserializeEmptyMap() {	
-		RavenMap writeMe = CreateEmptyMap();
+		IRavenMap writeMe = CreateEmptyMap();
 		String emptyMap = MapSerializer.serializeMap(writeMe);
 		Assert.assertEquals(emptyString, emptyMap);
 	}
@@ -46,12 +47,12 @@ public class MapSerializerTests {
 	@Test
 	@Ignore
 	public void SerializedEmptyMapEqualsNewEmptyMap(){
-		RavenMap expected = CreateEmptyMap();
-		RavenMap actual = MapSerializer.deserializeMapFromXML(emptyString);
+		IRavenMap expected = CreateEmptyMap();
+		IRavenMap actual = MapSerializer.deserializeMapFromXML(emptyString);
 		Assert.assertEquals(expected, actual);
 	}
 	
-	private RavenMap CreateEmptyMap() {
+	private IRavenMap CreateEmptyMap() {
 		return new RavenMap();
 	}
 }

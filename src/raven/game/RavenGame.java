@@ -17,6 +17,7 @@ import raven.game.armory.RavenProjectile;
 import raven.game.armory.Rocket;
 import raven.game.armory.Slug;
 import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.IRavenGame;
 import raven.game.messaging.Dispatcher;
 import raven.game.messaging.RavenMessage;
 import raven.game.navigation.PathManager;
@@ -30,9 +31,9 @@ import raven.utils.Log;
 import raven.utils.MapSerializer;
 import raven.utils.MapLoadedException;
 
-public class RavenGame {
+public class RavenGame implements IRavenGame {
 	/** the current game map */
-	private RavenMap map;
+	private IRavenMap map;
 
 	/** bots that inhabit the current map */
 	private ArrayList<IRavenBot> bots = new ArrayList<IRavenBot>();
@@ -123,7 +124,10 @@ public class RavenGame {
 		}
 	}
 
-	/** The usual suspects */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#render()
+	 */
+	@Override
 	public void render() {
 		Log.trace("game", "Rendering game");
 		// render the map
@@ -202,13 +206,10 @@ public class RavenGame {
 		}
 	}
 
-	/**
-	 * Update the game state over the given timestep in seconds.
-	 * 
-	 * @param delta
-	 *            amount of time to advance in seconds
-	 * @throws MapLoadedException 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#update(double)
 	 */
+	@Override
 	public void update(double delta) throws MapLoadedException {
 		Log.trace("game", "Beginning update");
 		
@@ -304,16 +305,26 @@ public class RavenGame {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#switchToMap(java.lang.String)
+	 */
+	@Override
 	public void switchToMap(String filename) {
 		newMapPath = filename;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#changeBotCount(int)
+	 */
+	@Override
 	public void changeBotCount(int count) {
 		botsToAdd += count;
 	}
 
-	/** Loads an environment from a file 
-	 * @throws IOException */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#loadMap(java.lang.String)
+	 */
+	@Override
 	public boolean loadMap(String fileName) throws IOException {
 		// clear any current bots and projectiles
 		clear();
@@ -359,41 +370,58 @@ public class RavenGame {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#addRocket(raven.game.interfaces.IRavenBot, raven.math.Vector2D)
+	 */
+	@Override
 	public void addRocket(IRavenBot shooter, Vector2D target) {
 		Log.trace("game", "Added rocket");
 		RavenProjectile rocket = new Rocket(shooter, target);	
 		projectiles.add(rocket);
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#addRailGunSlug(raven.game.interfaces.IRavenBot, raven.math.Vector2D)
+	 */
+	@Override
 	public void addRailGunSlug(IRavenBot shooter, Vector2D target) {
 		Log.trace("game", "Added slug");
 		RavenProjectile slug = new Slug(shooter, target);
 		projectiles.add(slug);
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#addShotGunPellet(raven.game.interfaces.IRavenBot, raven.math.Vector2D)
+	 */
+	@Override
 	public void addShotGunPellet(IRavenBot shooter, Vector2D target) {
 		Log.trace("game", "Added pellet");
 		RavenProjectile pellet = new Pellet(shooter, target);		
 		projectiles.add(pellet);
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#addBolt(raven.game.interfaces.IRavenBot, raven.math.Vector2D)
+	 */
+	@Override
 	public void addBolt(IRavenBot shooter, Vector2D target) {
 		Log.trace("game", "Added bolt");
 		RavenProjectile bolt = new Bolt(shooter, target);
 		projectiles.add(bolt);
 	}
 
-	/** removes the last bot to be added */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#removeBot()
+	 */
+	@Override
 	public void removeBot() {
 		removeBot = true;
 	}
 
-	/**
-	 * returns true if a bot of size BoundingRadius cannot move from A to B
-	 * without bumping into world geometry. It achieves this by stepping from
-	 * A to B in steps of size BoundingRadius and testing for intersection
-	 * with world geometry at each point.
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#isPathObstructed(raven.math.Vector2D, raven.math.Vector2D, double)
 	 */
+	@Override
 	public boolean isPathObstructed(Vector2D a, Vector2D b, double boundingRadius) {
 		Vector2D toB = b.sub(a);
 		toB.normalize();
@@ -412,7 +440,10 @@ public class RavenGame {
 		return false;
 	}
 
-	/** returns of bots in the FOV of the given bot */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getAllBotsInFOV(raven.game.interfaces.IRavenBot)
+	 */
+	@Override
 	public List<IRavenBot> getAllBotsInFOV(final IRavenBot bot) {
 		ArrayList<IRavenBot> visibleBots = new ArrayList<IRavenBot>();
 		
@@ -434,10 +465,10 @@ public class RavenGame {
 		return visibleBots;
 	}
 
-	/**
-	 * returns true if the second bot is unobstructed by walls and in the field
-	 * of view of the first.
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#isSecondVisibleToFirst(raven.game.interfaces.IRavenBot, raven.game.interfaces.IRavenBot)
 	 */
+	@Override
 	public boolean isSecondVisibleToFirst(final IRavenBot first, final IRavenBot second) {
 		// if the two bots are equal or if one of them is not alive return
 		// false
@@ -452,25 +483,26 @@ public class RavenGame {
 		return false;
 	}
 
-	/** returns true if the ray between A and B is unobstructed. */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#isLOSOkay(raven.math.Vector2D, raven.math.Vector2D)
+	 */
+	@Override
 	public boolean isLOSOkay(final Vector2D A, final Vector2D B) {
 		return !WallIntersectionTest.doWallsObstructLineSegment(A, B, map.getWalls());
 	}
 
-	/**
-	 * starting from the given origin and moving in the direction Heading this
-	 * method returns the distance to the closest wall
-	 * 
-	 * Note: This function is not implemented in the C++ version!
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getDistanceToClosestWall(raven.math.Vector2D, raven.math.Vector2D)
 	 */
+	@Override
 	public double getDistanceToClosestWall(Vector2D origin, Vector2D heading) {
 		return 0;
 	}
 
-	/**
-	 * returns the position of the closest visible switch that triggers the door
-	 * of the specified ID
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getPosOfClosestSwitch(raven.math.Vector2D, int)
 	 */
+	@Override
 	public Vector2D getPosOfClosestSwitch(Vector2D botPos, int doorID) {
 		List<Integer> switchIDs = new ArrayList<Integer>();
 		
@@ -500,14 +532,10 @@ public class RavenGame {
 		return closest;
 	}
 
-	/**
-	 * given a position on the map this method returns the bot found with its
-	 * bounding radius of that position.If there is no bot at the position the
-	 * method returns null
-	 * 
-	 * @param cursorPos
-	 * @return
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getBotAtPosition(raven.math.Vector2D)
 	 */
+	@Override
 	public IRavenBot getBotAtPosition(Vector2D cursorPos) {
 		for (IRavenBot bot : bots) {
 			if (bot.pos().distance(cursorPos) < bot.getBRadius()) {
@@ -520,6 +548,10 @@ public class RavenGame {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#togglePause()
+	 */
+	@Override
 	public boolean togglePause() {
 		paused = !paused;
 		Log.info("game", paused ? "Paused" : "Unpaused");
@@ -527,15 +559,10 @@ public class RavenGame {
 		return paused;
 	}
 
-	/**
-	 * this method is called when the user clicks the right mouse button. The
-	 * method checks to see if a bot is beneath the cursor. If so, the bot is
-	 * recorded as selected.If the cursor is not over a bot then any selected
-	 * bot/s will attempt to move to that position.
-	 * 
-	 * @param p
-	 *            the location clicked
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#clickRightMouseButton(raven.math.Vector2D, boolean)
 	 */
+	@Override
 	public void clickRightMouseButton(Vector2D p, boolean shiftKeyPressed) {
 		IRavenBot bot = getBotAtPosition(p);
 		
@@ -575,13 +602,10 @@ public class RavenGame {
 		}
 	}
 
-	/**
-	 * this method is called when the user clicks the left mouse button. If
-	 * there is a possessed bot, this fires the weapon, else does nothing
-	 * 
-	 * @param p
-	 *            the location clicked
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#clickLeftMouseButton(raven.math.Vector2D)
 	 */
+	@Override
 	public void clickLeftMouseButton(Vector2D p) {
 		if (selectedBot != null && selectedBot.isPossessed()) {
 			selectedBot.fireWeapon(p);
@@ -589,30 +613,38 @@ public class RavenGame {
 		}
 	}
 
-	/** when called will release any possessed bot from user control */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#exorciseAnyPossessedBot()
+	 */
+	@Override
 	public void exorciseAnyPossessedBot() {
 		if (selectedBot != null) {
 			selectedBot.exorcise();
 		}
 	}
 
-	/**
-	 * if a bot is possessed the keyboard is polled for user input and any
-	 * relevant bot methods are called appropriately
-	 * @param delta 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getPlayerInput(double)
 	 */
+	@Override
 	public void getPlayerInput(double delta) {
 		if (selectedBot != null && selectedBot.isPossessed()) {
 			selectedBot.rotateFacingTowardPosition(RavenUI.getClientCursorPosition(), delta);
 		}
 	}
 
-	/** Get the value of a selected bot. null if none is selected */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#possessedBot()
+	 */
+	@Override
 	public IRavenBot possessedBot() {
 		return selectedBot;
 	}
 
-	/** Change to a new weapon for a possessed bot. */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#changeWeaponOfPossessedBot(raven.game.RavenObject)
+	 */
+	@Override
 	public void changeWeaponOfPossessedBot(RavenObject weapon) {
 		if (selectedBot != null) {
 			switch (weapon) {
@@ -639,23 +671,42 @@ public class RavenGame {
 	//////////////
 	// Accessors
 
-	public RavenMap getMap() {
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getMap()
+	 */
+	@Override
+	public IRavenMap getMap() {
 		return map;
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getBots()
+	 */
+	@Override
 	public ArrayList<IRavenBot> getBots() {
 		return bots;
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getPathManager()
+	 */
+	@Override
 	public PathManager getPathManager() {
 		return pathManager;
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#getNumBots()
+	 */
+	@Override
 	public int getNumBots() {
 		return bots.size();
 	}
 	
-	/** Some weird helper method */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenGame#tagRavenBotsWithinViewRange(raven.game.interfaces.IRavenBot, double)
+	 */
+	@Override
 	public void tagRavenBotsWithinViewRange(IRavenBot ravenBot,
 			double viewDistance) {
 		//iterate through all entities checking for range

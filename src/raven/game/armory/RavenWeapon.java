@@ -49,7 +49,7 @@ public abstract class RavenWeapon {
 	
 	/** Causes the weapon to shoot at the chosen position. Each weapons overrides this method.
 	 * @param position */
-	public abstract void ShootAt(Vector2D position);
+	public abstract boolean ShootAt(Vector2D position);
 	
 	/** Draws the weapon on the display via GameCanvas static calls.
 	 * Overridden by each weapon. */
@@ -103,7 +103,7 @@ public abstract class RavenWeapon {
 	}
 	
 	public boolean isReadyForNextShot(double delta) { 
-		return timeUntilAvailable > 0; 
+		return timeUntilAvailable < 0; 
 	}
 	
 	protected void UpdateTimeWeaponIsNextAvailable() { timeUntilAvailable = 1.0/rateOfFire; }

@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import raven.game.IRavenMap;
 import raven.game.RavenBot;
 import raven.game.RavenDoor;
 import raven.game.RavenMap;
@@ -55,38 +56,38 @@ public class MapSerializer {
 		return streamer;
 	}
 	
-	public static String serializeMap(RavenMap map) {
+	public static String serializeMap(IRavenMap map) {
 		return initXStream().toXML(map);
 	}
 	
-	public static boolean serializeMapToFile(RavenMap map, File file) throws IOException {
+	public static boolean serializeMapToFile(IRavenMap map, File file) throws IOException {
 		FileWriter writer = new FileWriter(file);
 		writer.write(initXStream().toXML(map));
 		writer.close();
 		return true;
 	}
 	
-	public static boolean serializeMapToPath(RavenMap map, String filePath) throws IOException {
+	public static boolean serializeMapToPath(IRavenMap map, String filePath) throws IOException {
 		FileWriter writer = new FileWriter(filePath);
 		writer.write(initXStream().toXML(map));
 		writer.close();
 		return true;
 	}
 	
-	public static RavenMap deserializeMapFromXML(String xml){
-		return (RavenMap) initXStream().fromXML(xml);
+	public static IRavenMap deserializeMapFromXML(String xml){
+		return (IRavenMap) initXStream().fromXML(xml);
 	}
 	
-	public static RavenMap deserializeMapFromFile(File file) throws IOException {
+	public static IRavenMap deserializeMapFromFile(File file) throws IOException {
 		FileReader reader = new FileReader(file);
-		RavenMap result = (RavenMap)initXStream().fromXML(reader);
+		IRavenMap result = (IRavenMap)initXStream().fromXML(reader);
 		reader.close();
 		return result;
 	}
 	
-	public static RavenMap deserializeMapFromPath(String filePath) throws IOException {
+	public static IRavenMap deserializeMapFromPath(String filePath) throws IOException {
 		FileReader reader = new FileReader(filePath);
-		RavenMap result = (RavenMap)initXStream().fromXML(reader);
+		IRavenMap result = (IRavenMap)initXStream().fromXML(reader);
 		reader.close();
 		return result;
 	}

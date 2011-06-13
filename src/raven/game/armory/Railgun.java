@@ -93,18 +93,18 @@ public class Railgun extends RavenWeapon {
 	}
 
 	@Override
-	public void ShootAt(Vector2D position){
+	public boolean ShootAt(Vector2D position){
 		if ((getRoundsRemaining() > 0) && timeUntilAvailable <= 0){
-
 			//fire a round
 			getOwner().getWorld().addRailGunSlug(getOwner(), position);
 			UpdateTimeWeaponIsNextAvailable();
 			decrementRoundsLeft();
-
 			//add a trigger to the game so that the other bots can hear this shot
 			//(provided they are within range)
 			getOwner().getWorld().getMap().addSoundTrigger(getOwner(), RavenScript.getDouble("RailGun_SoundRange"));
+			return true;
 		}
+		else return false;
 	}
 
 	@Override

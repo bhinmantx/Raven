@@ -17,7 +17,7 @@ import javax.swing.event.MouseInputListener;
 
 import raven.edit.editor.Viewport;
 import raven.edit.editor.ViewportDelegate;
-import raven.game.RavenMap;
+import raven.game.IRavenMap;
 import raven.math.Vector2D;
 
 public abstract class EditorTool implements MouseInputListener, MouseWheelListener, KeyListener, ComponentListener {
@@ -25,7 +25,7 @@ public abstract class EditorTool implements MouseInputListener, MouseWheelListen
 	protected ViewportDelegate delegate;
 	protected Viewport viewport;
 	
-	protected RavenMap level;
+	protected IRavenMap level;
 	
 	
 	public EditorTool(ViewportDelegate delegate) {

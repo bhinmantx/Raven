@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import raven.edit.tools.EditorTool;
+import raven.game.IRavenMap;
 import raven.game.RavenBot;
-import raven.game.RavenMap;
 import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.navigation.NavGraphEdge;
@@ -34,7 +34,7 @@ public class Viewport extends JPanel {
 	private float scrollSpeed = 10;
 	private Vector2D levelPosition = new Vector2D(0,0); 
 	
-	private RavenMap level;
+	private IRavenMap level;
 	
 	// Drawing variables
 	
@@ -43,7 +43,7 @@ public class Viewport extends JPanel {
 	private boolean drawGrid = true;
 	private boolean gridSnap = true;
 	
-	public Viewport(RavenMap level) {
+	public Viewport(IRavenMap level) {
 		this.level = level;
 		
 		setLayout(new BorderLayout());
@@ -209,11 +209,11 @@ public class Viewport extends JPanel {
 	//////////////
 	// Accessors
 
-	public synchronized RavenMap getLevel() {
+	public synchronized IRavenMap getLevel() {
 		return level;
 	}
 
-	public synchronized void setLevel(RavenMap level) {
+	public synchronized void setLevel(IRavenMap level) {
 		this.level = level;
 		
 		repaint();

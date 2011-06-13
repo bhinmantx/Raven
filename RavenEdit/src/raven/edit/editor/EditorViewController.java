@@ -14,6 +14,7 @@ import javax.swing.filechooser.FileFilter;
 import raven.edit.graph.GraphBuilder;
 import raven.edit.tools.EditorTool;
 import raven.edit.tools.SelectTool;
+import raven.game.IRavenMap;
 import raven.game.RavenMap;
 import raven.utils.MapSerializer;
 
@@ -22,7 +23,7 @@ public class EditorViewController implements EditorViewDelegate {
 	
 	EditorView view;
 	EditorTool tool;
-	RavenMap level;
+	IRavenMap level;
 	
 	boolean isDirty;
 
@@ -73,7 +74,7 @@ public class EditorViewController implements EditorViewDelegate {
 		if (!doSaveIfDirty())
 			return false;
 
-		RavenMap newMap = new RavenMap();
+		IRavenMap newMap = new RavenMap();
 		
 		changeLevel(newMap);
 
@@ -91,7 +92,7 @@ public class EditorViewController implements EditorViewDelegate {
 		int result = fileChooser.showOpenDialog((Component)view);
 		
 		if (result == JFileChooser.APPROVE_OPTION) {
-			RavenMap level;
+			IRavenMap level;
 			try {
 				level = MapSerializer.deserializeMapFromFile(fileChooser.getSelectedFile());
 				changeLevel(level);
@@ -163,7 +164,7 @@ public class EditorViewController implements EditorViewDelegate {
 
 
 	@Override
-	public void changeLevel(RavenMap level) {
+	public void changeLevel(IRavenMap level) {
 		isDirty = false;
 		this.level = level;
 		graphBuilder.setLevel(level);
@@ -189,7 +190,7 @@ public class EditorViewController implements EditorViewDelegate {
 	}
 
 	@Override
-	public RavenMap getLevel() {
+	public IRavenMap getLevel() {
 		return level;
 	}
 

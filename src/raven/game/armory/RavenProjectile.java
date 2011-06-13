@@ -5,9 +5,9 @@ import java.util.List;
 
 import raven.game.MovingEntity;
 import raven.game.RavenBot;
-import raven.game.RavenGame;
 import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.IRavenGame;
 import raven.math.Geometry;
 import raven.math.Vector2D;
 
@@ -19,12 +19,12 @@ public abstract class RavenProjectile extends MovingEntity {
 	protected boolean isDead;
 	protected boolean isImpacted;
 	protected Vector2D impactPoint;
-	protected RavenGame world;
+	protected IRavenGame world;
 	protected int damageInflicted;
 	protected double timeSinceCreation;
 	
 	public RavenProjectile(Vector2D target,
-						RavenGame world,
+						IRavenGame world,
 						int shooterID,
 						Vector2D origin,
 						Vector2D heading,

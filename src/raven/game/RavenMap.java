@@ -27,7 +27,7 @@ import raven.utils.Log;
 import raven.utils.Pair;
 
 @XStreamAlias("RavenMap")
-public class RavenMap {
+public class RavenMap implements IRavenMap {
 	
 	/** the walls that comprise the current map's architecture. */
 	private ArrayList<Wall2D> walls;
@@ -79,14 +79,23 @@ public class RavenMap {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#addSpawnPoint(raven.math.Vector2D)
+	 */
 	public void addSpawnPoint(Vector2D point) {
 		spawnPoints.add(point);
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#addSpawnPoint(double, double)
+	 */
 	public void addSpawnPoint(double x, double y) {
 		spawnPoints.add(new Vector2D(x, y));
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#addHealthGiver(raven.math.Vector2D, int, int, int)
+	 */
 	public void addHealthGiver(Vector2D position, int radius, int healthPlus, int respawnDelay) {
 		TriggerHealthGiver healthGiver = new TriggerHealthGiver(position, radius, healthPlus);
 		
@@ -103,6 +112,9 @@ public class RavenMap {
 		EntityManager.registerEntity(healthGiver);
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#addWeaponGiver(raven.game.RavenObject, raven.math.Vector2D, int)
+	 */
 	public void addWeaponGiver(RavenObject typeOfWeapon, Vector2D position, int radius) {
 		TriggerWeaponGiver weaponGiver = new TriggerWeaponGiver(position, radius);
 		weaponGiver.setEntityType(typeOfWeapon);
@@ -119,6 +131,9 @@ public class RavenMap {
 
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#addDoor(int, raven.math.Vector2D, raven.math.Vector2D, int)
+	 */
 	public void addDoor(int id, Vector2D pos1, Vector2D pos2, int timeout) {
 		RavenDoor door = new RavenDoor(id, pos1, pos2, timeout);
 		
@@ -129,6 +144,9 @@ public class RavenMap {
 		EntityManager.registerEntity(door);
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#addDoorTrigger(raven.math.Vector2D, raven.math.Vector2D, raven.game.messaging.RavenMessage, int)
+	 */
 	public Trigger<IRavenBot> addDoorTrigger(Vector2D topLeft, Vector2D bottomRight, RavenMessage msg, int receiver) {
 		TriggerOnButtonSendMsg<IRavenBot> trigger = new TriggerOnButtonSendMsg<IRavenBot>(topLeft, bottomRight, msg, receiver);
 		triggerSystem.register(trigger);
@@ -137,6 +155,9 @@ public class RavenMap {
 		return trigger;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#clear()
+	 */
 	public void clear() {
 		// delete the triggers
 		triggerSystem.clear();
@@ -178,12 +199,8 @@ public class RavenMap {
 	
 
 	
-	/**
-	 * adds a wall and returns a pointer to that wall. (this method can be
-	 * used by objects such as doors to add walls to the environment)
-	 * @param from wall's starting point
-	 * @param to wall's ending point
-	 * @return the new wall created
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#addWall(raven.math.Vector2D, raven.math.Vector2D)
 	 */
 	public Wall2D addWall(Vector2D from, Vector2D to) {
 		Wall2D wall = new Wall2D(from, to);
@@ -191,10 +208,16 @@ public class RavenMap {
 		return wall;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#addSoundTrigger(raven.game.interfaces.IRavenBot, double)
+	 */
 	public void addSoundTrigger(IRavenBot soundSource, double range) {
 		triggerSystem.register(new TriggerSoundNotify(soundSource, range));
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#calculateCostToTravelBetweenNodes(int, int)
+	 */
 	public double calculateCostToTravelBetweenNodes(int node1, int node2) {
 		if (node1 < 0 || node2 < 0 || node1 >= navGraph.numNodes() || node2 >= navGraph.numNodes())
 			throw new IndexOutOfBoundsException("Invalid node index: " + node1 + " to " + node2);
@@ -208,7 +231,9 @@ public class RavenMap {
 		return cost;
 	}
 	
-	/** returns the position of a graph node selected at random */
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getRandomNodeLocation()
+	 */
 	public Vector2D getRandomNodeLocation() {
 		int randIndex = (int)(Math.random() * navGraph.numActiveNodes());
 		
@@ -227,56 +252,95 @@ public class RavenMap {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#updateTriggerSystem(double, java.util.List)
+	 */
 	public void updateTriggerSystem(double delta, List<IRavenBot> bots) {
 		triggerSystem.update(delta, bots);
 	}
 	
 	// Accessors
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getTriggers()
+	 */
 	public List<Trigger<IRavenBot>> getTriggers() {
 		return triggerSystem.getTriggers();
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getWalls()
+	 */
 	public List<Wall2D> getWalls() {
 		return walls;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getNavGraph()
+	 */
 	public SparseGraph<NavGraphNode<Trigger<IRavenBot>>, NavGraphEdge> getNavGraph() {
 		return navGraph;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getDoors()
+	 */
 	public List<RavenDoor> getDoors() {
 		return doors;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getSpawnPoints()
+	 */
 	public List<Vector2D> getSpawnPoints() {
 		return spawnPoints;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getCellSpace()
+	 */
 	public CellSpacePartition<NavGraphNode<Trigger<IRavenBot>>> getCellSpace() {
 		return spacePartition;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getRandomSpawnPoint()
+	 */
 	public Vector2D getRandomSpawnPoint() {
 		return spawnPoints.get((int)(Math.random() * spawnPoints.size()));
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getSizeX()
+	 */
 	public int getSizeX() { 
 		return sizeX;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getSizeY()
+	 */
 	public int getSizeY() {
 		return sizeY;
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getMaxDimension()
+	 */
 	public int getMaxDimension() { 
 		return Math.max(sizeX, sizeY);
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getCellSpaceNeighborhoodRange()
+	 */
 	public double getCellSpaceNeighborhoodRange() {
 		return cellSpaceNeighborhoodRange;
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#render()
+	 */
 	public void render() {
 		//draw basic background
 		GameCanvas.whiteBrush();
@@ -311,6 +375,9 @@ public class RavenMap {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object other){
 		if (this == other) return true;
@@ -329,6 +396,9 @@ public class RavenMap {
 		else return false;		
 	}
 	
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		int result = 0;
@@ -347,11 +417,26 @@ public class RavenMap {
 		return result % 101;
 	}
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getPath()
+	 */
 	public String getPath() { return path; }
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#setPath(java.lang.String)
+	 */
 	public void setPath(String path) { this.path = path; }
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#getName()
+	 */
 	public String getName() { return name; }
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#setName(java.lang.String)
+	 */
 	public void setName(String name) { this.name = name; }
 
+	/* (non-Javadoc)
+	 * @see raven.game.IRavenMap#setSize(int, int)
+	 */
 	public void setSize(int width, int height) {
 		this.sizeX = width;
 		this.sizeY = height;		

@@ -3,6 +3,7 @@ package raven;
 import java.awt.Dimension;
 
 import raven.game.RavenGame;
+import raven.game.interfaces.IRavenGame;
 import raven.ui.GameCanvas;
 import raven.ui.RavenUI;
 import raven.utils.Log;
@@ -11,7 +12,7 @@ import raven.utils.MapLoadedException;
 
 public class Main {
 	private static RavenUI ui;
-	private static RavenGame game;
+	private static IRavenGame game;
 	
     public static void main(String args[]) {
     	Log.setLevel(Level.DEBUG);

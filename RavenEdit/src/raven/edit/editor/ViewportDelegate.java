@@ -1,7 +1,7 @@
 package raven.edit.editor;
 
+import raven.game.IRavenMap;
 import raven.game.RavenBot;
-import raven.game.RavenMap;
 import raven.game.interfaces.IRavenBot;
 import raven.game.triggers.Trigger;
 import raven.math.Vector2D;
@@ -14,5 +14,5 @@ public interface ViewportDelegate {
 	public Viewport getViewport();
 	public void setViewport(Viewport viewport);
 	
-	public RavenMap getLevel();
+	public IRavenMap getLevel();
 }

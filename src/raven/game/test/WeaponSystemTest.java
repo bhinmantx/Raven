@@ -3,6 +3,8 @@
  */
 package raven.game.test;
 
+import java.util.Timer;
+
 import junit.framework.Assert;
 
 import org.jmock.Expectations;
@@ -10,6 +12,7 @@ import org.jmock.Mockery;
 import org.junit.Before;
 import org.junit.Test;
 
+import raven.game.IRavenMap;
 import raven.game.RavenObject;
 import raven.game.RavenWeaponSystem;
 import raven.game.armory.Blaster;
@@ -17,8 +20,10 @@ import raven.game.armory.Railgun;
 import raven.game.armory.RocketLauncher;
 import raven.game.armory.Shotgun;
 import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.IRavenGame;
 import raven.game.interfaces.IRavenTargetingSystem;
 import raven.math.Vector2D;
+import raven.script.RavenScript;
 
 /**
  * @author chester
@@ -126,4 +131,37 @@ public class WeaponSystemTest {
 		weapons.selectWeapon();
 		Assert.assertTrue(weapons.getCurrentWeapon().getClass() == Blaster.class);
 	}
+
+	@Test
+	public void Blaster_Fires_No_More_Than_The_Configured_Amount(){
+		double blasterRate = RavenScript.getDouble("Blaster_FiringFreq");
+		int duration = 10; //seconds
+		int timesFiredMax = (int)(duration/blasterRate); // this is the theoretical maximum.  We'll 
+												  		 // floor this and say we can't fire more than this.
+		int timesFired = 0;
+		final IRavenGame gameStub = mocker.mock(IRavenGame.class);
+		final IRavenMap mapStub = mocker.mock(IRavenMap.class);
+		Vector2D targetPos = new Vector2D(0, 0);
+		
+		mocker.checking(new Expectations() {{
+			allowing(bot).getWorld(); will(returnValue(gameStub));
+			allowing(gameStub).addBolt(with(any(IRavenBot.class)), with(any(Vector2D.class)));
+			allowing(gameStub).getMap(); will(returnValue(mapStub));
+			allowing(mapStub).addSoundTrigger(with(any(IRavenBot.class)), with(any(Double.class)));
+		}});
+		
+		Blaster blaster = new Blaster(bot);
+		double timeStart = System.nanoTime();
+		double time = timeStart;
+		double newTime;
+		while(timesFiredMax > 0){
+			newTime = System.nanoTime();
+			blaster.update(newTime-time);
+			timesFired += blaster.ShootAt(targetPos) ? 1 : 0;
+			time = System.nanoTime();
+		}
+		double durationReal = time-timeStart;
+		Assert.assertTrue((int)durationReal >= duration);
+	}
+
 }
