@@ -4,11 +4,11 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-import raven.game.armory.Blaster;
-import raven.game.armory.Railgun;
-import raven.game.armory.RavenWeapon;
-import raven.game.armory.RocketLauncher;
-import raven.game.armory.Shotgun;
+import raven.armory.model.Blaster;
+import raven.armory.model.Railgun;
+import raven.armory.model.RavenWeapon;
+import raven.armory.model.RocketLauncher;
+import raven.armory.model.Shotgun;
 import raven.game.interfaces.IRavenBot;
 import raven.math.Transformations;
 import raven.math.Vector2D;

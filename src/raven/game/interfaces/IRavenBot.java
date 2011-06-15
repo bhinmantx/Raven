@@ -3,13 +3,12 @@ package raven.game.interfaces;
 import raven.game.RavenObject;
 import raven.game.RavenSensoryMemory;
 import raven.game.RavenSteering;
-import raven.game.RavenTargetingSystem;
 import raven.game.RavenWeaponSystem;
 import raven.game.messaging.Telegram;
-import raven.goals.GoalThink;
+import raven.goals.model.GoalThink;
 import raven.math.Vector2D;
 
-public interface IRavenBot {
+public interface IRavenBot extends IUpdatable {
 
 	public boolean isAlive();
 	public boolean isReadyForTriggerUpdate();
@@ -43,7 +42,6 @@ public interface IRavenBot {
 	public boolean isSpawning();
 	public void spawn(Vector2D pos);
 	public IRavenBot getTargetBot();
-	public void render();
 	public double getMaxSpeed();
 	public Vector2D velocity();
 	public RavenObject entityType();
@@ -51,5 +49,8 @@ public interface IRavenBot {
 	public boolean hasLOSto(Vector2D aimingPos);
 	public Vector2D heading();
 	public boolean handleMessage(Telegram msg);
+	public boolean isHit();
+	public void setHit(boolean b);
+	public int score();
 	
 }

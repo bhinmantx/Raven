@@ -18,7 +18,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import raven.edit.editor.ViewportDelegate;
-import raven.game.RavenMap;
+import raven.game.model.RavenMap;
 import raven.math.Vector2D;
 import raven.math.Wall2D;
 

@@ -7,8 +7,8 @@ import java.awt.image.BufferedImage;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 
-import raven.game.RavenMap;
-import raven.game.navigation.NavGraphNode;
+import raven.game.model.RavenMap;
+import raven.navigation.model.NavGraphNode;
 import raven.script.RavenScript;
 import raven.edit.editor.EditorView;
 import raven.edit.editor.EditorViewDelegate;

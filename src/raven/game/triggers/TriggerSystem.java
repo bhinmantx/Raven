@@ -7,8 +7,8 @@ import java.util.List;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
-import raven.game.BaseGameEntity;
 import raven.game.interfaces.IRavenBot;
+import raven.game.model.BaseGameEntity;
 
 @XStreamAlias("TriggerSystem")
 public class TriggerSystem<T extends Trigger> {

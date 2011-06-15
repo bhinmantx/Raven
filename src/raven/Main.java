@@ -2,8 +2,8 @@ package raven;
 
 import java.awt.Dimension;
 
-import raven.game.RavenGame;
 import raven.game.interfaces.IRavenGame;
+import raven.game.model.RavenGame;
 import raven.ui.GameCanvas;
 import raven.ui.RavenUI;
 import raven.utils.Log;

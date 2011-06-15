@@ -2,9 +2,9 @@ package raven.game.triggers;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-import raven.game.BaseGameEntity;
-import raven.game.RavenBot;
 import raven.game.interfaces.IRavenBot;
+import raven.game.model.BaseGameEntity;
+import raven.game.model.RavenBot;
 import raven.math.Vector2D;
 
 @XStreamAlias("Trigger")

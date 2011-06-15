@@ -6,6 +6,7 @@ import java.util.Vector;
 
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenGame;
+import raven.game.model.RavenBot;
 import raven.math.Geometry;
 import raven.math.Transformations;
 import raven.math.Vector2D;

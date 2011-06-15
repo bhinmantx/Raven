@@ -1,8 +1,8 @@
 package raven.edit.editor;
 
-import raven.game.IRavenMap;
-import raven.game.RavenBot;
 import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.IRavenMap;
+import raven.game.model.RavenBot;
 import raven.game.triggers.Trigger;
 import raven.math.Vector2D;
 

@@ -24,9 +24,9 @@ import javax.swing.KeyStroke;
 import raven.edit.editor.actions.*;
 import raven.edit.editor.actions.menu.*;
 import raven.edit.tools.EditorTool;
-import raven.game.IRavenMap;
-import raven.game.RavenBot;
 import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.IRavenMap;
+import raven.game.model.RavenBot;
 import raven.game.triggers.Trigger;
 import raven.math.Vector2D;
 

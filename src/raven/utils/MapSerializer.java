@@ -8,12 +8,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import raven.game.IRavenMap;
-import raven.game.RavenBot;
-import raven.game.RavenDoor;
-import raven.game.RavenMap;
-import raven.game.navigation.NavGraphEdge;
-import raven.game.navigation.NavGraphNode;
+import raven.game.interfaces.IRavenMap;
+import raven.game.model.RavenBot;
+import raven.game.model.RavenDoor;
+import raven.game.model.RavenMap;
 import raven.game.triggers.Trigger;
 import raven.game.triggers.TriggerHealthGiver;
 import raven.game.triggers.TriggerRegionCircle;
@@ -24,6 +22,8 @@ import raven.math.CellSpacePartition;
 import raven.math.Vector2D;
 import raven.math.Wall2D;
 import raven.math.graph.SparseGraph;
+import raven.navigation.model.NavGraphEdge;
+import raven.navigation.model.NavGraphNode;
 
 import com.thoughtworks.xstream.XStream;
 

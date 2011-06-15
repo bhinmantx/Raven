@@ -14,8 +14,8 @@ import javax.swing.filechooser.FileFilter;
 import raven.edit.graph.GraphBuilder;
 import raven.edit.tools.EditorTool;
 import raven.edit.tools.SelectTool;
-import raven.game.IRavenMap;
-import raven.game.RavenMap;
+import raven.game.interfaces.IRavenMap;
+import raven.game.model.RavenMap;
 import raven.utils.MapSerializer;
 
 public class EditorViewController implements EditorViewDelegate {

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import raven.game.interfaces.IRavenBot;
+import raven.game.model.BaseGameEntity;
 import raven.utils.Log;
 
 public class EntityManager {

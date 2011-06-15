@@ -4,7 +4,7 @@ import java.awt.event.ComponentListener;
 
 import raven.edit.graph.GraphBuilder;
 import raven.edit.tools.EditorTool;
-import raven.game.IRavenMap;
+import raven.game.interfaces.IRavenMap;
 
 public interface EditorViewDelegate extends ComponentListener {
 	public EditorView getView();

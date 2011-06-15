@@ -4,6 +4,7 @@ import java.util.List;
 
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenTargetingSystem;
+import raven.game.model.RavenBot;
 import raven.math.Vector2D;
 
 public class RavenTargetingSystem implements IRavenTargetingSystem{

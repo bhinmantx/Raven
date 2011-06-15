@@ -1,7 +1,7 @@
 package raven.game.triggers;
 
-import raven.game.BaseGameEntity;
 import raven.game.interfaces.IRavenBot;
+import raven.game.model.BaseGameEntity;
 import raven.math.Vector2D;
 
 public abstract class TriggerRespawning<T extends IRavenBot> extends Trigger<T> {

@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
 import raven.edit.editor.ViewportDelegate;
-import raven.game.RavenMap;
+import raven.game.model.RavenMap;
 
 public class SelectTool extends EditorTool {
 

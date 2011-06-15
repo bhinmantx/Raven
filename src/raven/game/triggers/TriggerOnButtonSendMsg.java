@@ -1,9 +1,9 @@
 package raven.game.triggers;
 
-import raven.game.BaseGameEntity;
 import raven.game.interfaces.IRavenBot;
 import raven.game.messaging.Dispatcher;
 import raven.game.messaging.RavenMessage;
+import raven.game.model.BaseGameEntity;
 import raven.math.Vector2D;
 import raven.ui.GameCanvas;
 

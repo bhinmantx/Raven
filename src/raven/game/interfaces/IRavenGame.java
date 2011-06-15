@@ -1,19 +1,16 @@
 package raven.game.interfaces;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import raven.game.IRavenMap;
+import raven.armory.model.RavenProjectile;
 import raven.game.RavenObject;
-import raven.game.navigation.PathManager;
+import raven.game.model.Grave;
 import raven.math.Vector2D;
+import raven.navigation.model.PathManager;
 import raven.utils.MapLoadedException;
 
 public interface IRavenGame {
-
-	/** The usual suspects */
-	public abstract void render();
 
 	/**
 	 * Update the game state over the given timestep in seconds.
@@ -131,7 +128,7 @@ public interface IRavenGame {
 
 	public abstract IRavenMap getMap();
 
-	public abstract ArrayList<IRavenBot> getBots();
+	public abstract List<IRavenBot> getBots();
 
 	public abstract PathManager getPathManager();
 
@@ -140,5 +137,11 @@ public interface IRavenGame {
 	/** Some weird helper method */
 	public abstract void tagRavenBotsWithinViewRange(IRavenBot ravenBot,
 			double viewDistance);
+	
+	public List<Grave> getGraves();
+
+	public abstract IRavenBot selectedBot();
+
+	public abstract List<RavenProjectile> getProjectiles();
 
 }

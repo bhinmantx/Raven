@@ -33,7 +33,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
 
 import raven.game.RavenObject;
-import raven.game.RavenUserOptions;
 import raven.game.interfaces.IRavenGame;
 import raven.math.Vector2D;
 import raven.utils.Log;
