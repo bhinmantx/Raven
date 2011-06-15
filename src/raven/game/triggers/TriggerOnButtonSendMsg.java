@@ -43,7 +43,6 @@ public class TriggerOnButtonSendMsg<T extends IRavenBot> extends Trigger<T> {
 	@Override
 	public void update(double delta) { }
 
-	@Override
 	public void render() {
 		GameCanvas.orangePen();
 		

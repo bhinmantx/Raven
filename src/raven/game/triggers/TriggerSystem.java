@@ -74,7 +74,7 @@ public class TriggerSystem<T extends Trigger> {
 	
 	public void render() {
 		for (T trigger : triggers) {
-			trigger.render();
+			//trigger.render();
 		}
 	}
 	

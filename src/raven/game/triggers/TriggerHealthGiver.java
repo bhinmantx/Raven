@@ -45,7 +45,6 @@ public class TriggerHealthGiver extends TriggerRespawning<IRavenBot> {
 		}
 	}
 
-	@Override
 	public void render() {
 		if (isActive()) {
 			GameCanvas.blackPen();

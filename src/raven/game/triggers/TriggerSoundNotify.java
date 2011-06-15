@@ -35,7 +35,6 @@ public class TriggerSoundNotify extends TriggerLimitedLifetime<IRavenBot> {
 	}
 
 	/** Sound triggers are invisible */
-	@Override
 	public void render() {}
 
 }

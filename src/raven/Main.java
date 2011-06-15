@@ -51,7 +51,7 @@ public class Main {
     		try {
     			GameCanvas.startDrawing(game.getMap().getSizeX(), game.getMap().getSizeY(), loadedMap);
     			loadedMap = false;
-    			game.render();
+    			//game.render();
     		} finally {
     			GameCanvas.stopDrawing();
     		}

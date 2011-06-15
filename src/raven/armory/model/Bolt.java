@@ -3,11 +3,9 @@
  */
 package raven.armory.model;
 
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.messaging.Dispatcher;
 import raven.game.messaging.RavenMessage;
-import raven.game.model.RavenBot;
 import raven.math.Geometry;
 import raven.math.Vector2D;
 import raven.script.RavenScript;
@@ -34,7 +32,6 @@ public class Bolt extends RavenProjectile {
 		);	
 	}
 
-	@Override
 	public void render() {
 		GameCanvas.thickGreenPen();
 		GameCanvas.line(position, position.sub(velocity));

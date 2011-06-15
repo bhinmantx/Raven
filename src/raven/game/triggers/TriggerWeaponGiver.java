@@ -48,7 +48,6 @@ public class TriggerWeaponGiver extends TriggerRespawning<IRavenBot> {
 		}
 	}
 
-	@Override
 	public void render() {
 		if (this.isActive() && pos() != null) {
 			switch(this.entityType()) {
