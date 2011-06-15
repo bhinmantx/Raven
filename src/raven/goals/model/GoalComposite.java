@@ -3,10 +3,10 @@ package raven.goals.model;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-import raven.game.messaging.Telegram;
 import raven.game.model.BaseGameEntity;
 import raven.game.model.RavenBot;
 import raven.math.Vector2D;
+import raven.messaging.Telegram;
 import raven.ui.GameCanvas;
 
 abstract public class GoalComposite<T extends BaseGameEntity> extends Goal<T> {

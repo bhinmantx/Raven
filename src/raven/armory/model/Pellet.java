@@ -1,10 +1,10 @@
 package raven.armory.model;
 
 import raven.game.interfaces.IRavenBot;
-import raven.game.messaging.Dispatcher;
-import raven.game.messaging.RavenMessage;
 import raven.math.Geometry;
 import raven.math.Vector2D;
+import raven.messaging.Dispatcher;
+import raven.messaging.RavenMessage;
 import raven.script.RavenScript;
 import raven.ui.GameCanvas;
 

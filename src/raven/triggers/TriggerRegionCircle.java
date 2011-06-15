@@ -1,4 +1,4 @@
-package raven.game.triggers;
+package raven.triggers;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

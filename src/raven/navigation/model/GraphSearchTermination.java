@@ -1,8 +1,8 @@
 package raven.navigation.model;
 
 import raven.game.RavenObject;
-import raven.game.triggers.Trigger;
 import raven.math.graph.SparseGraph;
+import raven.triggers.Trigger;
 
 public interface GraphSearchTermination<T extends SparseGraph<NavGraphNode<Trigger<?>>, NavGraphEdge>> {
 	public boolean isSatisfied(T graph, int target, int currentNodeIndex);

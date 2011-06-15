@@ -17,15 +17,15 @@ import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenMap;
 import raven.game.model.RavenBot;
-import raven.game.triggers.Trigger;
-import raven.game.triggers.TriggerHealthGiver;
-import raven.game.triggers.TriggerWeaponGiver;
 import raven.math.Vector2D;
 import raven.math.Wall2D;
 import raven.math.graph.GraphEdge;
 import raven.math.graph.SparseGraph;
 import raven.navigation.model.NavGraphEdge;
 import raven.navigation.model.NavGraphNode;
+import raven.triggers.Trigger;
+import raven.triggers.TriggerHealthGiver;
+import raven.triggers.TriggerWeaponGiver;
 
 public class Viewport extends JPanel {
 	private ViewportDelegate delegate;

@@ -1,4 +1,4 @@
-package raven.game.messaging;
+package raven.messaging;
 
 public class Telegram implements Comparable<Telegram> {
 	public double dispatchDelay;

@@ -4,9 +4,9 @@ import raven.game.RavenObject;
 import raven.game.RavenSensoryMemory;
 import raven.game.RavenSteering;
 import raven.game.RavenWeaponSystem;
-import raven.game.messaging.Telegram;
 import raven.goals.model.GoalThink;
 import raven.math.Vector2D;
+import raven.messaging.Telegram;
 
 public interface IRavenBot extends IUpdatable {
 

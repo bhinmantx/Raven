@@ -3,16 +3,16 @@ package raven.game.interfaces;
 import java.util.List;
 
 import raven.game.RavenObject;
-import raven.game.messaging.RavenMessage;
 import raven.game.model.RavenDoor;
-import raven.game.triggers.Trigger;
-import raven.game.triggers.TriggerSystem;
 import raven.math.CellSpacePartition;
 import raven.math.Vector2D;
 import raven.math.Wall2D;
 import raven.math.graph.SparseGraph;
+import raven.messaging.RavenMessage;
 import raven.navigation.model.NavGraphEdge;
 import raven.navigation.model.NavGraphNode;
+import raven.triggers.Trigger;
+import raven.triggers.TriggerSystem;
 
 public interface IRavenMap {
 

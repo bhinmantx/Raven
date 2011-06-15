@@ -1,9 +1,9 @@
 package raven.goals.model;
 
-import raven.game.messaging.Telegram;
 import raven.game.model.BaseGameEntity;
 import raven.game.model.RavenBot;
 import raven.math.Vector2D;
+import raven.messaging.Telegram;
 import raven.ui.GameCanvas;
 
 public abstract class Goal<T extends BaseGameEntity> {

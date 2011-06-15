@@ -7,7 +7,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenMap;
 import raven.game.model.RavenBot;
-import raven.game.triggers.Trigger;
 import raven.math.Vector2D;
 import raven.math.Wall2D;
 import raven.math.WallIntersectionTest;
@@ -16,6 +15,7 @@ import raven.math.graph.SparseGraph;
 import raven.navigation.model.NavGraphEdge;
 import raven.navigation.model.NavGraphNode;
 import raven.script.RavenScript;
+import raven.triggers.Trigger;
 
 public class GraphBuilder {
 

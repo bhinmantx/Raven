@@ -1,10 +1,10 @@
-package raven.game.triggers;
+package raven.triggers;
 
 import raven.game.interfaces.IRavenBot;
-import raven.game.messaging.Dispatcher;
-import raven.game.messaging.RavenMessage;
 import raven.game.model.BaseGameEntity;
 import raven.math.Vector2D;
+import raven.messaging.Dispatcher;
+import raven.messaging.RavenMessage;
 import raven.ui.GameCanvas;
 
 public class TriggerOnButtonSendMsg<T extends IRavenBot> extends Trigger<T> {

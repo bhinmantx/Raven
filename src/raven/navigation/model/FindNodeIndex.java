@@ -1,9 +1,9 @@
 package raven.navigation.model;
 import raven.game.model.BaseGameEntity;
 import raven.game.model.RavenBot;
-import raven.game.triggers.*;
 import raven.math.graph.GraphEdge;
 import raven.math.graph.SparseGraph;
+import raven.triggers.*;
 public class FindNodeIndex {
 	private SparseGraph<NavGraphNode<Trigger<RavenBot>>, NavGraphEdge> navGraph = new SparseGraph<NavGraphNode<Trigger<RavenBot>>, NavGraphEdge>();
 	 public static boolean isSatisfied(GraphEdge G, int target, int CurrentNodeIdx)

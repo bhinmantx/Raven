@@ -13,9 +13,9 @@ import raven.game.RavenObject;
 import raven.game.RavenWeaponSystem;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
-import raven.game.triggers.TriggerHealthGiver;
-import raven.game.triggers.TriggerWeaponGiver;
 import raven.math.Vector2D;
+import raven.triggers.TriggerHealthGiver;
+import raven.triggers.TriggerWeaponGiver;
 
 /**
  * @author chester

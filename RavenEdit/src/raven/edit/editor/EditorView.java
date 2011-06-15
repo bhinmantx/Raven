@@ -27,8 +27,8 @@ import raven.edit.tools.EditorTool;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenMap;
 import raven.game.model.RavenBot;
-import raven.game.triggers.Trigger;
 import raven.math.Vector2D;
+import raven.triggers.Trigger;
 
 public class EditorView extends JFrame implements ViewportDelegate {
 	private IRavenMap level;

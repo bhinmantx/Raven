@@ -3,8 +3,8 @@ package raven.edit.editor;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenMap;
 import raven.game.model.RavenBot;
-import raven.game.triggers.Trigger;
 import raven.math.Vector2D;
+import raven.triggers.Trigger;
 
 public interface ViewportDelegate {
 	public void updateStatus(String status);

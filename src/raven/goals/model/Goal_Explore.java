@@ -1,8 +1,8 @@
 package raven.goals.model;
 
-import raven.game.messaging.Telegram;
 import raven.game.model.RavenBot;
 import raven.math.Vector2D;
+import raven.messaging.Telegram;
 
 public class Goal_Explore extends GoalComposite<RavenBot> {
 

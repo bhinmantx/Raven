@@ -1,4 +1,4 @@
-package raven.game.triggers;
+package raven.triggers;
 
 import java.awt.Image;
 

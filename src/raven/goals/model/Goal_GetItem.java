@@ -1,9 +1,9 @@
 package raven.goals.model;
 
 import raven.game.RavenObject;
-import raven.game.messaging.Telegram;
 import raven.game.model.RavenBot;
-import raven.game.triggers.Trigger;
+import raven.messaging.Telegram;
+import raven.triggers.Trigger;
 
 public class Goal_GetItem extends GoalComposite<RavenBot> {
 

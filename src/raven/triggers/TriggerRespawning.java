@@ -1,4 +1,4 @@
-package raven.game.triggers;
+package raven.triggers;
 
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.BaseGameEntity;

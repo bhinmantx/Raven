@@ -1,4 +1,4 @@
-package raven.game.messaging;
+package raven.messaging;
 
 public enum RavenMessage {
 	MSG_BLANK,

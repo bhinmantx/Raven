@@ -20,11 +20,11 @@ import raven.edit.editor.ViewportDelegate;
 import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
-import raven.game.triggers.Trigger;
 import raven.math.Vector2D;
 import raven.math.graph.SparseGraph;
 import raven.navigation.model.NavGraphEdge;
 import raven.navigation.model.NavGraphNode;
+import raven.triggers.Trigger;
 
 public class GraphTool extends EditorTool {
 

@@ -14,9 +14,9 @@ import javax.swing.JPopupMenu;
 
 import raven.edit.editor.ViewportDelegate;
 import raven.game.RavenObject;
-import raven.game.triggers.TriggerWeaponGiver;
 import raven.math.Vector2D;
 import raven.script.RavenScript;
+import raven.triggers.TriggerWeaponGiver;
 
 public class ShotgunTool extends EditorTool {
 

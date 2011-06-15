@@ -1,8 +1,8 @@
-package raven.game.triggers;
+package raven.triggers;
 
 import raven.game.interfaces.IRavenBot;
-import raven.game.messaging.Dispatcher;
-import raven.game.messaging.RavenMessage;
+import raven.messaging.Dispatcher;
+import raven.messaging.RavenMessage;
 import raven.script.RavenScript;
 
 public class TriggerSoundNotify extends TriggerLimitedLifetime<IRavenBot> {

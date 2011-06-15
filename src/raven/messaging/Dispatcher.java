@@ -1,4 +1,4 @@
-package raven.game.messaging;
+package raven.messaging;
 
 import java.util.HashSet;
 import java.util.TreeSet;
