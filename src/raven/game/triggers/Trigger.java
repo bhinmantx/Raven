@@ -21,12 +21,11 @@ public abstract class Trigger<T extends IRavenBot> extends BaseGameEntity {
 	protected void setInactive() { active = false; }
 	protected void setActive() { active = true; }
 	
-	protected boolean isTouchingTrigger(Vector2D entityPos, double entityRadius) {
+	public boolean isTouchingTrigger(Vector2D entityPos, double entityRadius) {
 		if (regionOfInfluence != null) {
 			return regionOfInfluence.isTouching(entityPos, entityRadius);
 		}
-		
-		return false;
+		else return false;
 	}
 	
 	public boolean isTouchingTrigger(RavenBot bot) {
