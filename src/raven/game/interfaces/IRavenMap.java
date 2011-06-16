@@ -2,7 +2,6 @@ package raven.game.interfaces;
 
 import java.util.List;
 
-import raven.game.RavenObject;
 import raven.game.model.RavenDoor;
 import raven.math.CellSpacePartition;
 import raven.math.Vector2D;
@@ -11,6 +10,7 @@ import raven.math.graph.SparseGraph;
 import raven.messaging.RavenMessage;
 import raven.navigation.model.NavGraphEdge;
 import raven.navigation.model.NavGraphNode;
+import raven.systems.RavenObject;
 import raven.triggers.Trigger;
 import raven.triggers.TriggerSystem;
 

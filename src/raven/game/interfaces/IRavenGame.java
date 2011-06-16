@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import raven.armory.model.RavenProjectile;
-import raven.game.RavenObject;
 import raven.game.model.Grave;
 import raven.math.Vector2D;
 import raven.navigation.model.PathManager;
+import raven.systems.RavenObject;
 import raven.utils.MapLoadedException;
 
 public interface IRavenGame {

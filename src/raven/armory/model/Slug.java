@@ -2,7 +2,6 @@ package raven.armory.model;
 
 import java.util.List;
 
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
 import raven.math.Geometry;
@@ -10,6 +9,7 @@ import raven.math.Vector2D;
 import raven.messaging.Dispatcher;
 import raven.messaging.RavenMessage;
 import raven.script.RavenScript;
+import raven.systems.RavenObject;
 import raven.ui.GameCanvas;
 
 public class Slug extends RavenProjectile {

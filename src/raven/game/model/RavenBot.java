@@ -2,11 +2,6 @@ package raven.game.model;
 
 import java.util.ArrayList;
 
-import raven.game.RavenObject;
-import raven.game.RavenSensoryMemory;
-import raven.game.RavenSteering;
-import raven.game.RavenTargetingSystem;
-import raven.game.RavenWeaponSystem;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenGame;
 import raven.game.interfaces.IRavenTargetingSystem;
@@ -19,6 +14,11 @@ import raven.messaging.RavenMessage;
 import raven.messaging.Telegram;
 import raven.navigation.model.RavenPathPlanner;
 import raven.script.RavenScript;
+import raven.systems.RavenObject;
+import raven.systems.RavenSensoryMemory;
+import raven.systems.RavenSteering;
+import raven.systems.RavenTargetingSystem;
+import raven.systems.RavenWeaponSystem;
 import raven.ui.GameCanvas;
 import raven.ui.RavenUserOptions;
 import raven.utils.Log;

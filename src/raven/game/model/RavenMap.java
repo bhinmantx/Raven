@@ -6,8 +6,6 @@ import java.util.Map;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-import raven.game.EntityManager;
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenMap;
 import raven.math.CellSpacePartition;
@@ -19,6 +17,8 @@ import raven.messaging.RavenMessage;
 import raven.navigation.model.NavGraphEdge;
 import raven.navigation.model.NavGraphNode;
 import raven.script.RavenScript;
+import raven.systems.EntityManager;
+import raven.systems.RavenObject;
 import raven.triggers.Trigger;
 import raven.triggers.TriggerHealthGiver;
 import raven.triggers.TriggerOnButtonSendMsg;

@@ -2,9 +2,9 @@ package raven.goals.model;
 
 import java.util.Vector;
 
-import raven.game.RavenObject;
 import raven.game.model.RavenBot;
 import raven.math.Vector2D;
+import raven.systems.RavenObject;
 import raven.utils.Log;
 
 public class GoalThink extends GoalComposite<RavenBot> {

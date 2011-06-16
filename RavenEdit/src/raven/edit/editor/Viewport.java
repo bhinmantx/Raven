@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import raven.edit.tools.EditorTool;
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenMap;
 import raven.game.model.RavenBot;
@@ -23,6 +22,7 @@ import raven.math.graph.GraphEdge;
 import raven.math.graph.SparseGraph;
 import raven.navigation.model.NavGraphEdge;
 import raven.navigation.model.NavGraphNode;
+import raven.systems.RavenObject;
 import raven.triggers.Trigger;
 import raven.triggers.TriggerHealthGiver;
 import raven.triggers.TriggerWeaponGiver;

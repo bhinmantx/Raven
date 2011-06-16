@@ -3,13 +3,13 @@ package raven.armory.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenGame;
 import raven.game.model.MovingEntity;
 import raven.game.model.RavenBot;
 import raven.math.Geometry;
 import raven.math.Vector2D;
+import raven.systems.RavenObject;
 
 public abstract class RavenProjectile extends MovingEntity {
 

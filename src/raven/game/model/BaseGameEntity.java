@@ -1,8 +1,8 @@
 package raven.game.model;
 
-import raven.game.RavenObject;
 import raven.math.Vector2D;
 import raven.messaging.Telegram;
+import raven.systems.RavenObject;
 import raven.game.interfaces.IUpdatable;
 
 public abstract class BaseGameEntity implements IUpdatable {

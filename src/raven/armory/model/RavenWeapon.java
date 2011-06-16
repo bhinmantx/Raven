@@ -6,11 +6,11 @@ package raven.armory.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
 import raven.goals.fuzzy.FuzzyModule;
 import raven.math.Vector2D;
+import raven.systems.RavenObject;
 
 /**
  * @author chester

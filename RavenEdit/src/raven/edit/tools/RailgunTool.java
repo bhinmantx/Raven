@@ -13,9 +13,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import raven.edit.editor.ViewportDelegate;
-import raven.game.RavenObject;
 import raven.math.Vector2D;
 import raven.script.RavenScript;
+import raven.systems.RavenObject;
 
 public class RailgunTool extends EditorTool {
 

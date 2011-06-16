@@ -1,10 +1,10 @@
 package raven.goals.model;
 
-import raven.game.RavenObject;
 import raven.game.model.RavenBot;
 import raven.goals.model.RavenFeature;
 import raven.goals.model.Goal.GoalType;
 import raven.math.Vector2D;
+import raven.systems.RavenObject;
 import raven.ui.GameCanvas;
 
 public class GetHealthGoal_Evaluator extends Goal_Evaluator {

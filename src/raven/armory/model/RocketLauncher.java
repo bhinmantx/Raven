@@ -5,7 +5,6 @@ package raven.armory.model;
 
 import java.util.List;
 
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
 import raven.goals.fuzzy.FuzzyModule;
@@ -13,6 +12,7 @@ import raven.goals.fuzzy.FuzzyVariable;
 import raven.goals.fuzzy.FzAnd;
 import raven.goals.fuzzy.FzSet;
 import raven.script.RavenScript;
+import raven.systems.RavenObject;
 import raven.ui.GameCanvas;
 import raven.math.Transformations;
 import raven.math.Vector2D;

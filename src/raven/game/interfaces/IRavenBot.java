@@ -1,12 +1,12 @@
 package raven.game.interfaces;
 
-import raven.game.RavenObject;
-import raven.game.RavenSensoryMemory;
-import raven.game.RavenSteering;
-import raven.game.RavenWeaponSystem;
 import raven.goals.model.GoalThink;
 import raven.math.Vector2D;
 import raven.messaging.Telegram;
+import raven.systems.RavenObject;
+import raven.systems.RavenSensoryMemory;
+import raven.systems.RavenSteering;
+import raven.systems.RavenWeaponSystem;
 
 public interface IRavenBot extends IUpdatable {
 

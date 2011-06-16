@@ -17,13 +17,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import raven.edit.editor.ViewportDelegate;
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
 import raven.math.Vector2D;
 import raven.math.graph.SparseGraph;
 import raven.navigation.model.NavGraphEdge;
 import raven.navigation.model.NavGraphNode;
+import raven.systems.RavenObject;
 import raven.triggers.Trigger;
 
 public class GraphTool extends EditorTool {

@@ -2,11 +2,11 @@ package raven.triggers;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
 import raven.math.Vector2D;
 import raven.script.RavenScript;
+import raven.systems.RavenObject;
 import raven.ui.GameCanvas;
 import raven.utils.Log;
 

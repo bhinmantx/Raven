@@ -1,7 +1,7 @@
 package raven.navigation.model;
 
-import raven.game.RavenObject;
 import raven.math.graph.SparseGraph;
+import raven.systems.RavenObject;
 import raven.triggers.Trigger;
 
 public interface GraphSearchTermination<T extends SparseGraph<NavGraphNode<Trigger<?>>, NavGraphEdge>> {

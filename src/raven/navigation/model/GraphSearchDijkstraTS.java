@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import raven.game.RavenObject;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
 import raven.math.graph.EuclideanHeuristic;
@@ -13,6 +12,7 @@ import raven.math.graph.GraphSearchStatus;
 import raven.math.graph.GraphSearchType;
 import raven.math.graph.Heuristic;
 import raven.math.graph.SparseGraph;
+import raven.systems.RavenObject;
 import raven.triggers.Trigger;
 import raven.utils.IndexedPriorityQueue;
 

@@ -4,9 +4,9 @@ import raven.armory.model.Railgun;
 import raven.armory.model.RavenWeapon;
 import raven.armory.model.RocketLauncher;
 import raven.armory.model.Shotgun;
-import raven.game.RavenObject;
 import raven.game.model.RavenBot;
 import raven.script.RavenScript;
+import raven.systems.RavenObject;
 
 public class RavenFeature {
 

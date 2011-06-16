@@ -9,11 +9,11 @@ import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Test;
 
-import raven.game.RavenObject;
-import raven.game.RavenWeaponSystem;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.RavenBot;
 import raven.math.Vector2D;
+import raven.systems.RavenObject;
+import raven.systems.RavenWeaponSystem;
 import raven.triggers.TriggerHealthGiver;
 import raven.triggers.TriggerWeaponGiver;
 

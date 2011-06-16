@@ -3,9 +3,9 @@ package raven.messaging;
 import java.util.HashSet;
 import java.util.TreeSet;
 
-import raven.game.EntityManager;
 import raven.game.interfaces.IRavenBot;
 import raven.game.model.BaseGameEntity;
+import raven.systems.EntityManager;
 import raven.utils.Log;
 
 public class Dispatcher {

@@ -16,14 +16,14 @@ import raven.armory.model.Blaster;
 import raven.armory.model.Railgun;
 import raven.armory.model.RocketLauncher;
 import raven.armory.model.Shotgun;
-import raven.game.RavenObject;
-import raven.game.RavenWeaponSystem;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.IRavenGame;
 import raven.game.interfaces.IRavenMap;
 import raven.game.interfaces.IRavenTargetingSystem;
 import raven.math.Vector2D;
 import raven.script.RavenScript;
+import raven.systems.RavenObject;
+import raven.systems.RavenWeaponSystem;
 
 /**
  * @author chester
