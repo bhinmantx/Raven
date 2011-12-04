@@ -250,13 +250,20 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		
 		//attempt to join a team
 		//First get an available team and join it
-		team = EntityManager.getAvailableTeam();
-
-		
+		try {
+			team = EntityManager.getAvailableTeam();
+		} catch (noTeamException e) {
+			e.printStackTrace();
+		}
 		Log.info("BotConstructor", "Bot team is" + this.team.ID());
 		//We want entity manager to handle this later but for now just let team know you're joining
 		team.draftBot(this);
-		this.team.getNewTask();
+		curTask = this.team.getNewTask();
+		if(curTask == RavenTask.TASK_CAPTAIN)
+		{
+			this.becomeCaptain();
+		}
+		
 	}
 
 	/**
@@ -358,8 +365,10 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		GameCanvas.redPen();
 
 		if (RavenUserOptions.showBotIDs) {
-			GameCanvas.textAtPos(pos().x - 10, pos().y - 20,
-					Integer.toString(ID()));
+			if(isCaptain){
+				GameCanvas.textAtPos(pos().x - 10, pos().y - 20,
+				(Integer.toString(ID()))+ " is Captain");
+			}
 		}
 
 		if (RavenUserOptions.showBotHealth) {
@@ -427,7 +436,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 			// and takes a shot if a shot is possible
 			weaponSys.takeAimAndShoot(delta);
 		}
-		//selected bot crap
+		//selected bot junk
 		if(isPossessed())
 		{
 			weaponSys.angryFire(delta);
@@ -628,6 +637,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		//large factor
 		this.maxHealth = (maxHealth*10);
 		this.health = (health * 10);
+		Log.info("TEAM", "Registered Captain of team " + this.getTeam().ID());
 	}
 
 	/**

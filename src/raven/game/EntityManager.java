@@ -36,48 +36,28 @@ public class EntityManager {
 	private static ArrayList<Team> listOfTeamIDs = new ArrayList<Team>();
 	
 
-	public static Team getAvailableTeam() {
-		
-		////this method is UNSAFE, it is assuming a team
-		///has been created!
-		
-		if(lastTeamAssigned < listOfTeamIDs.size()-1){
-			int temporary = lastTeamAssigned;
-			lastTeamAssigned++;
-			return listOfTeamIDs.get(lastTeamAssigned);
+	public static Team getAvailableTeam() throws noTeamException  {
+		if (listOfTeamIDs.isEmpty())
+		{
+			Log.info("EntityManager", "NO TEAMS FOUND");
+			throw new noTeamException("No Teams");
 		}
-		else{
-			System.out.println("(From the else) Last Assigned: " + lastTeamAssigned);
-			int temporary = lastTeamAssigned;
-			lastTeamAssigned = 0;
-			return listOfTeamIDs.get(0);
-		}
+
+			if(lastTeamAssigned < listOfTeamIDs.size()-1){
+				int temporary = lastTeamAssigned;
+				lastTeamAssigned++;
+				return listOfTeamIDs.get(lastTeamAssigned);
+			}
+			else{
+				System.out.println("(From the else) Last Assigned: " + lastTeamAssigned);
+				int temporary = lastTeamAssigned;
+				lastTeamAssigned = 0;
+				return listOfTeamIDs.get(0);
+			}
+
+
 	}
 	
-	
-	/*
-	public static Team getAvailableTeam() {
-		if(lastTeamAssigned == -1){
-			///First bot to request a team
-			System.out.println("Negative one means first assignment");
-			System.out.println("Last Assigned: " + lastTeamAssigned);
-			lastTeamAssigned = 0;
-			return listOfTeamIDs.get(0);
-		}
-		else if(lastTeamAssigned >= listOfTeamIDs.size()){
-			System.out.println("Should be the last team in a list, so, we assign 0");
-			System.out.println("Last Assigned: " + lastTeamAssigned);
-			lastTeamAssigned = 0;
-			return listOfTeamIDs.get(0);
-		}
-		else
-			System.out.println("This is the else Last Assigned: " + lastTeamAssigned);
-			System.out.println("Not the first, looks like last time it was probably zero, so team 1");
-		lastTeamAssigned++;
-		System.out.println("Last Assigned plus 1" + lastTeamAssigned);
-		return listOfTeamIDs.get(lastTeamAssigned);		
-	}
-	*/
 	
 	
 	private EntityManager() {

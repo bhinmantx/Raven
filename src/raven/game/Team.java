@@ -56,7 +56,7 @@ public class Team extends BaseGameEntity implements ITeam
 	
 	///We need a valid location for spawning
 	private ArrayList<Vector2D> teamSpawnPoints;
-
+	
 	//public static Color teamColor;
 	
 	//Goal queue? 
@@ -230,8 +230,10 @@ public class Team extends BaseGameEntity implements ITeam
 	
 	public RavenTask getNewTask(){
 		
-		TaskMaster.getMaster();
-		return RavenTask.TASK_NONE;
+		return (TaskMaster.getMaster()).getNewTask(this);
+		
+		//return RavenTask.TASK_NONE;
+//		return RavenTask.TASK_CAPTAIN;
 	}
 	
 }
