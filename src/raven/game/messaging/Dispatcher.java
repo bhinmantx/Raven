@@ -6,6 +6,7 @@ import java.util.TreeSet;
 import raven.game.BaseGameEntity;
 import raven.game.EntityManager;
 import raven.game.interfaces.IRavenBot;
+import raven.game.interfaces.ITeam;
 import raven.utils.Log;
 
 public class Dispatcher {
@@ -100,6 +101,53 @@ public class Dispatcher {
 		}
 		getInstance().priorityQueue.removeAll(toRemove);
 	}
+
+	
+
+/**
+ * In order to handle messages broadcast to the whole team, we have to account for the different ID system
+ * that teams use. 
+ * @param delay
+ * @param id
+ * @param teamID
+ * @param broadCastMessage
+ * @param senderID
+ */
+/*
+	public static void dispatchTeamMsg(double delay, int id, int teamID, RavenMessage broadCastMessage, int senderID) {
+		//EntityManager.getTeamFromID(teamID);
+		
+		// get the receiver
+		ITeam receiver = EntityManager.getTeamFromID(teamID);
+		ITeam team = null;
+		// make sure the receiver is valid
+		if (receiver == null) {
+			//try to get the bot now
+			team = EntityManager.getTeamFromID(teamID);
+		}
+		
+		if(team == null) System.err.println("Warning! No receiver with ID of " + teamID + " found.");
+		
+		
+		// create the telegram
+		Telegram telegram = new Telegram(0, senderID, receiverID, msg, extraInfo);
+		
+		// if there is no delay, route telegram immediately
+		if (delay <= 0.0) {
+			if(receiver != null) discharge(receiver, telegram);
+			else discharge(bot, telegram);
+		}
+		// else add the telegram to be dispatched
+		else {
+			telegram.dispatchDelay = delay;
+			
+			getInstance().priorityQueue.add(telegram);
+		}
+	}
+	*/
+	
+	
+	
 }
 
 

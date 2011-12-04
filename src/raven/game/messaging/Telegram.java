@@ -22,6 +22,10 @@ public class Telegram implements Comparable<Telegram> {
 		this.extraInfo = extraInfo;
 	}
 	
+
+
+	
+	
 	@Override
 	public int compareTo(Telegram other) {
 		return (int)(this.dispatchDelay - other.dispatchDelay);

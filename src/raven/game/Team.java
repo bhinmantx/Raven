@@ -8,6 +8,7 @@ import raven.game.interfaces.IRavenBot;
 //import raven.goals.GoalThink;
 
 import java.awt.Color;
+import java.util.Iterator;
 import java.util.List;
 import raven.math.*;
 import raven.ui.GameCanvas;
@@ -174,8 +175,19 @@ public class Team extends BaseGameEntity implements ITeam
 		//	----It should ignore new hit by notifications until said target
 		//  ---- is dead, or 2 seconds
 		//
+		Iterator iterator = teamBots.iterator();
+		while(iterator.hasNext()){
+			
+//			(((RavenBot)iterator.next())).ID()
+			//.handleMessage(msg);
+			
+		}
 		
-	return false;
+		
+		
+		
+		
+	return true;
 	}
 
 	//TODO If we implement a "Base" so that bots don't 
