@@ -502,10 +502,10 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		case MSG_CAPTAIN_ATTACKED_BY:
 			///This is a team message! Or it should be. 
 			if(msg.extraInfo != null)
-			Log.info("Bot Message Handler", "Oh no captain under attack by: " + msg.extraInfo);
 			///If this is a bodyguard, drop everything and protect the captain from whomever is shooting him.
 			if(getTask() == RavenTask.TASK_BODYGUARD)
 			{
+				Log.info("Bot Message Handler", "Pursuit Goal should be triggered " + msg.extraInfo);
 				brain.addGoal_pursuit((RavenBot) EntityManager.getBotFromID((Integer) msg.extraInfo));
 			}
 			

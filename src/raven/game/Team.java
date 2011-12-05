@@ -13,7 +13,7 @@ import java.util.List;
 import raven.math.*;
 import raven.ui.GameCanvas;
 import raven.utils.Log;
-import raven.game.TaskMaster;
+//import raven.game.TaskMaster;
 
 import java.util.ArrayList;
 
@@ -182,16 +182,19 @@ public class Team extends BaseGameEntity implements ITeam
 	 */
 	public RavenTask getNewTask(RavenTask curTask)
 	{
-		//TODO We need to find out how to use that RavenTask Enum to populate a list or, something. 
+		//TODO We need to find out how to use that RavenTask Enum to populate a list  
 		if (!teamHasCaptain()){
 			return RavenTask.TASK_CAPTAIN;
 		}
 		else if (bodyguardsActive >= 2){
 			snipersActive++;
+			Log.info("Team Tasks", "Sniper Task Given");
 			return RavenTask.TASK_SNIPER;
+			
 		}
 		else{
 			bodyguardsActive++;
+			Log.info("Team Tasks", "Body Guard Task Given");
 		return RavenTask.TASK_BODYGUARD;
 		}
 		
