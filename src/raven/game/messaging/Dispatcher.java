@@ -133,16 +133,16 @@ public class Dispatcher {
 			//try to get the bot now
 //			team = EntityManager.getTeamFromID(teamID);
 //		}
-		Log.info("Dispatcher", "Trying to broadcast");
+	//	Log.info("Dispatcher", "Trying to broadcast");
 		if(receiver == null) System.err.println("Warning! No Team receiver found.");
 		
 		
 		// create the telegram
 		Telegram telegram = new Telegram(0, senderID, receiver, broadCastMsg, extraInfo);
-		Log.info("Dispatcher", "Created Telegram");
+	//	Log.info("Dispatcher", "Created Telegram");
 		// if there is no delay, route telegram immediately
 		if (delay <= 0.0) {
-			Log.info("Dispatcher", "Created Telegram");
+		//	Log.info("Dispatcher", "Created Telegram");
 			discharge(receiver, telegram);
 		
 		}

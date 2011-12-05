@@ -8,6 +8,7 @@ import raven.game.interfaces.IRavenBot;
 //import raven.goals.GoalThink;
 
 import java.awt.Color;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import raven.math.*;
@@ -16,6 +17,7 @@ import raven.utils.Log;
 //import raven.game.TaskMaster;
 
 import java.util.ArrayList;
+
 
 
 
@@ -45,7 +47,7 @@ public class Team extends BaseGameEntity implements ITeam
 	///We have a list of all tasks, there should be a way to use that to create a list of active tasks.
 	int bodyguardsActive = 0;
 	int snipersActive = 0;
-
+	private Hashtable<RavenTask, Integer> taskTable;
 	
 	
 	public Team(int id)
@@ -86,6 +88,14 @@ public class Team extends BaseGameEntity implements ITeam
 				 teamColor = new Color(0,250,0);
 				 captainColor = createCaptainColor(teamColor);
 				 currValidColor = 0;
+			 }
+			 
+			 ///This may be a bad way to do this, but very every element in the
+			 ///RavenTask enum, we now have a way of tracking how many of them are active!
+			 
+			 taskTable = new Hashtable<RavenTask, Integer>();
+			 for(RavenTask rt : RavenTask.values()){
+				 taskTable.put(rt, 0);
 			 }
 			 
 		}
@@ -183,17 +193,18 @@ public class Team extends BaseGameEntity implements ITeam
 	public RavenTask getNewTask(RavenTask curTask)
 	{
 		//TODO We need to find out how to use that RavenTask Enum to populate a list  
-		if (!teamHasCaptain()){
+		if (!teamHasCaptain() || (curTask == RavenTask.TASK_CAPTAIN)){
 			return RavenTask.TASK_CAPTAIN;
 		}
-		else if (bodyguardsActive >= 2){
-			snipersActive++;
+		else 
+			taskTable.put(curTask,(taskTable.get(curTask)-1));
+		/////On to assignments!
+		if (taskTable.get(RavenTask.TASK_BODYGUARD) >= 2){
 			Log.info("Team Tasks", "Sniper Task Given");
 			return RavenTask.TASK_SNIPER;
-			
 		}
 		else{
-			bodyguardsActive++;
+			taskTable.put(RavenTask.TASK_BODYGUARD,(taskTable.get(RavenTask.TASK_BODYGUARD)+1));
 			Log.info("Team Tasks", "Body Guard Task Given");
 		return RavenTask.TASK_BODYGUARD;
 		}
