@@ -53,6 +53,7 @@ public class GoalThink extends GoalComposite<RavenBot> {
 		if (ravenBot.getTask() == RavenTask.TASK_BODYGUARD)
 			m_Evaluators.add(new FindTeamCaptainGoal_Evaluator(0.0));
 		//m_Evaluators.add(new FindEnemyCaptainGoal_Evaluator(AttackBias));
+		//m_Evaluators.add(new HuntEnemyCaptain_Evaluator(HuntBias));
 		
 		try {
 			m_Evaluators.add(new GetWeaponGoal_Evaluator(ShotgunBias,

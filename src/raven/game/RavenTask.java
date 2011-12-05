@@ -6,12 +6,19 @@ package raven.game;
  *
  */
 public enum RavenTask {
-TASK_CAPTAIN (1,.5,.5,.5,.5,.5,1),
-TASK_BODYGUARD (1,.5,.5,.5,.5,.5,1),
-TASK_SNIPER (1,0.0,0.0,1,.5,.5,.5),
-TASK_NONE (1,.5,.5,.5,.5,.5,1);
+TASK_CAPTAIN (1,.5,.5,.5,.5,1,1),
+TASK_BODYGUARD (1,.5,.5,.5,.5,1,0),
+TASK_SNIPER (.5,0.0,0.0,1.25,.5,1,1),
+TASK_NONE (1,.5,.5,.5,.5,1,1);
 
-RavenTask(double health,double shotgun,double rocket,double rail,double explore,double attack,double hunt){
+RavenTask(double health,
+		  double shotgun,
+		  double rocket,
+		  double rail,
+		  double explore,
+		  double attack,
+		  double hunt){
+	
 	this.HealthBias = health;
 	this.ShotgunBias = shotgun;
 	this.RocketLauncherBias = rocket;

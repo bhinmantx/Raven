@@ -31,4 +31,5 @@ public interface ITeam {
 	public void removeBotFromTeam(IRavenBot draftee);
 	public RavenObject entityType();
 	public int ID();
+	public Vector2D getCaptainLocation();
 }
