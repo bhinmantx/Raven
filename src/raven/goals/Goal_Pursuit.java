@@ -38,6 +38,6 @@ public class Goal_Pursuit extends GoalComposite<RavenBot> {
 	@Override
 	public void render() {
 		// do nothing
-		m_SubGoals.get(0).render();
+	//	m_SubGoals.get(0).render();
 	}
 }

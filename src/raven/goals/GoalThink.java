@@ -26,7 +26,7 @@ public class GoalThink extends GoalComposite<RavenBot> {
 		RocketLauncherBias = Math.random() + 0.5;
 		RailgunBias = Math.random() + 0.5;
 		ExploreBias = Math.random() + 0.5;
-		AttackBias  = Math.random() + 0.5;
+		AttackBias  = Math.random() + 0.1;
 
 		
 
