@@ -182,48 +182,28 @@ public class Team extends BaseGameEntity implements ITeam
 	}
 	
 	
-	/**
-	 * This is meant to replace the TaskMaster singleton 
-	 * class, as there's too much cohesion and information that
-	 * needs to pass between Team and TaskMaster. 
-	 * Better just to add functions to Team. 
-	 * @param curTask
-	 * @return
-	 */
-	public RavenTask getNewTask(RavenTask curTask)
-	{
-		//TODO We need to find out how to use that RavenTask Enum to populate a list  
-		if (!teamHasCaptain() || (curTask == RavenTask.TASK_CAPTAIN)){
-			return RavenTask.TASK_CAPTAIN;
-		}
-		else 
-			taskTable.put(curTask,(taskTable.get(curTask)-1));
-		/////On to assignments!
-		if (taskTable.get(RavenTask.TASK_BODYGUARD) >= 2){
-			Log.info("Team Tasks", "Sniper Task Given");
-			return RavenTask.TASK_SNIPER;
-		}
-		else{
-			taskTable.put(RavenTask.TASK_BODYGUARD,(taskTable.get(RavenTask.TASK_BODYGUARD)+1));
-			Log.info("Team Tasks", "Body Guard Task Given");
-		return RavenTask.TASK_BODYGUARD;
-		}
-		
-	}
-
-	
-	
-	public RavenTask getNewTask(){
-		
-//		return (TaskMaster.getMaster()).getNewTask(this);
-		return getNewTask(RavenTask.TASK_NONE);
+public RavenTask getNewTask(RavenTask curTask){
+	return TaskMaster.getMaster().getNewTask(curTask, this);
 }
 
+public RavenTask getNewTask(){
+	return getNewTask(RavenTask.TASK_NONE);
+}
 	
 
+	
+	public Hashtable<RavenTask, Integer> getTaskTable()
+	{
+		return taskTable;
+	}
 
 	public void CaptainIsNow(RavenBot ravenBot) {
 		teamCaptain = ravenBot;
+	}
+	
+	public Vector2D getCaptainLocation()
+	{
+		return teamCaptain.pos();
 	}
 	
 }

@@ -1,6 +1,6 @@
 package raven;
 
-//Faking changes to test this commit
+
 
 import java.awt.Dimension;
 
@@ -10,6 +10,7 @@ import raven.ui.RavenUI;
 import raven.utils.Log;
 import raven.utils.Log.Level;
 import raven.utils.MapLoadedException;
+import raven.game.TaskMaster;
 
 public class Main {
 	private static RavenUI ui;

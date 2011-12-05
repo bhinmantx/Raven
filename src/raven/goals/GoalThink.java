@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import raven.game.RavenBot;
 import raven.game.RavenObject;
+import raven.game.RavenTask;
 import raven.math.Vector2D;
 import raven.utils.Log;
 
@@ -15,26 +16,43 @@ public class GoalThink extends GoalComposite<RavenBot> {
 	private double RailgunBias = 0.0;
 	private double ExploreBias = 0;
 	private double AttackBias  = 0;
+	private double HuntBias  = 0;
 
 	public GoalThink(RavenBot ravenBot) {
 		super(ravenBot, Goal.GoalType.goal_think);
 		Log.debug("GoalThink", "created new brain attached to bot " + ravenBot.ID());
 
 		// random values are between 0.5 and 1.5
+		
+		
+		RavenTask task = ravenBot.getTask();
+		
+		HealthBias = task.HealthBias;
+		ShotgunBias = task.ShotgunBias;
+		RocketLauncherBias = task.RocketLauncherBias;
+		RailgunBias = task.RailgunBias;
+		ExploreBias	= task.ExploreBias;
+		AttackBias = task.AttackBias;
+		HuntBias = task.HuntBias;
+
+		///Originally these were random. Now I can set them in the Enum for tasks
+		/*
 		HealthBias = Math.random() + 0.5;
 		ShotgunBias = Math.random() + 0.5;
 		RocketLauncherBias = Math.random() + 0.5;
 		RailgunBias = Math.random() + 0.5;
 		ExploreBias = Math.random() + 0.5;
 		AttackBias  = Math.random() + 0.1;
-
+		HuntBias = 0.0;
+		*/
 		
 
 		m_Evaluators.add(new GetHealthGoal_Evaluator(HealthBias));
 		m_Evaluators.add(new ExploreGoal_Evaluator(ExploreBias));
 		m_Evaluators.add(new AttackTargetGoal_Evaluator(AttackBias));
+		m_Evaluators.add(new FindTeamCaptainGoal_Evaluator(AttackBias));
+		//m_Evaluators.add(new FindEnemyCaptainGoal_Evaluator(AttackBias));
 		
-
 		try {
 			m_Evaluators.add(new GetWeaponGoal_Evaluator(ShotgunBias,
 					RavenObject.SHOTGUN));

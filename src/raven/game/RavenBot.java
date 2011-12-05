@@ -207,6 +207,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		status = Status.SPAWNING;
 		possessed = false;
 		fieldOfView = Math.toRadians(RavenScript.getDouble("Bot_FOV"));
+		curTask = RavenTask.TASK_NONE;
 		
 		////For teams, is this the team leader
 		isCaptain = false;

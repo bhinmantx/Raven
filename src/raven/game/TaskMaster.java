@@ -34,20 +34,61 @@ import raven.utils.Log;
 			
 //		}
 		
-		/**
-		 * This runs the RavenTask version of getNewTask with TASK_NONE, to avoid 
-		 * re-writing the same code. 
-		 * @return
-		 */
+		
+		
+		
+		
+		
+		
+		
+		public RavenTask getNewTask(RavenTask curTask, Team team)
+		{
+			//TODO We need to find out how to use that RavenTask Enum to populate a list  
+			if (!team.teamHasCaptain() || (curTask == RavenTask.TASK_CAPTAIN)){
+				return RavenTask.TASK_CAPTAIN;
+			}
+			else 
+				team.getTaskTable().put(curTask,(team.getTaskTable().get(curTask)-1));
+			/////On to assignments!
+			if (team.getTaskTable().get(RavenTask.TASK_BODYGUARD) >= 2){
+				Log.info("Team Tasks", "Sniper Task Given");
+				return RavenTask.TASK_SNIPER;
+			}
+			else{
+				team.getTaskTable().put(RavenTask.TASK_BODYGUARD,(team.getTaskTable().get(RavenTask.TASK_BODYGUARD)+1));
+				Log.info("Team Tasks", "Body Guard Task Given");
+			return RavenTask.TASK_BODYGUARD;
+			}
+			
+		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		 
+		
 		public RavenTask getNewTask(Team botTeam){
 			return getNewTask(botTeam, RavenTask.TASK_NONE);
 		}
 		
-		/**
-		 * A version of getNewTask that accepts the current task for the purposes of arbitration. 
-		 * @param cur_task
-		 * @return a string of the new tasks
-		 */
+
 		public RavenTask getNewTask(Team botTeam, RavenTask cur_task){
 			
 			///TODO -  This is where iterators could go in order to create 
@@ -70,6 +111,9 @@ import raven.utils.Log;
 		///If there is already a captain, let's figure out a new role
 		///wingman
 		///Medic
+		
+		*/
+		
 		
 		private TaskMaster() {
 			Log.info("TASKMASTER", " Task master private function ");
