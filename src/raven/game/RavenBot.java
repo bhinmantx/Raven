@@ -472,7 +472,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		if (this.isCaptain){
 				///If this bot is not dead, and is the captain, then let the team know the captain
 				///is under attack
-			//Dispatcher.dispatchTeamMsg(Dispatcher.SEND_MSG_IMMEDIATELY, ID(), this.getTeam(), RavenMessage.MSG_CAPTAIN_ATTACKED_BY, msg.senderID);
+			Dispatcher.dispatchMsg(Dispatcher.SEND_MSG_IMMEDIATELY, ID(), this.getTeam(), RavenMessage.MSG_CAPTAIN_ATTACKED_BY, msg.senderID);
 			Log.info("RavenBot", "Captain Under Attack!");
 			}
 
@@ -499,6 +499,12 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 				targSys.clearTarget();
 			}
 			
+			return true;
+		case MSG_CAPTAIN_ATTACKED_BY:
+			///This is a team message! Or it should be. 
+			if(msg.extraInfo != null)
+			Log.info("Bot Message Handler", "Oh no captain under attack by: " + msg.extraInfo);
+
 			return true;
 		
 		default:

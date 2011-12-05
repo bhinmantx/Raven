@@ -31,6 +31,12 @@ public class Dispatcher {
 		}
 	}
 	
+	private static void discharge(ITeam receiver, Telegram msg){
+		if (!receiver.handleMessage(msg)) {
+			Log.error("Dispatcher", "The receiving object could not handle the message.");
+		}
+	}
+	
 	private static void discharge(IRavenBot receiver, Telegram msg) {
 		if (!receiver.handleMessage(msg)) {
 			Log.error("Dispatcher", "The receiving object could not handle the message.");
@@ -107,35 +113,38 @@ public class Dispatcher {
 /**
  * In order to handle messages broadcast to the whole team, we have to account for the different ID system
  * that teams use. 
+ * I'm removing the null receiver checks, because if there weren't any teams the system
+ * would have already exited. 
  * @param delay
  * @param id
  * @param teamID
  * @param broadCastMessage
  * @param senderID
  */
-/*
-	public static void dispatchTeamMsg(double delay, int id, int teamID, RavenMessage broadCastMessage, int senderID) {
+
+	public static void dispatchMsg(double delay, int senderID, ITeam receiverTeam, RavenMessage broadCastMsg, Object extraInfo) {
 		//EntityManager.getTeamFromID(teamID);
 		
 		// get the receiver
-		ITeam receiver = EntityManager.getTeamFromID(teamID);
-		ITeam team = null;
-		// make sure the receiver is valid
-		if (receiver == null) {
+		ITeam receiver = receiverTeam;
+//		ITeam team = null;
+//		// make sure the receiver is valid
+//		if (receiver == null) {
 			//try to get the bot now
-			team = EntityManager.getTeamFromID(teamID);
-		}
-		
-		if(team == null) System.err.println("Warning! No receiver with ID of " + teamID + " found.");
+//			team = EntityManager.getTeamFromID(teamID);
+//		}
+		Log.info("Dispatcher", "Trying to broadcast");
+		if(receiver == null) System.err.println("Warning! No Team receiver found.");
 		
 		
 		// create the telegram
-		Telegram telegram = new Telegram(0, senderID, receiverID, msg, extraInfo);
-		
+		Telegram telegram = new Telegram(0, senderID, receiver, broadCastMsg, extraInfo);
+		Log.info("Dispatcher", "Created Telegram");
 		// if there is no delay, route telegram immediately
 		if (delay <= 0.0) {
-			if(receiver != null) discharge(receiver, telegram);
-			else discharge(bot, telegram);
+			Log.info("Dispatcher", "Created Telegram");
+			discharge(receiver, telegram);
+		
 		}
 		// else add the telegram to be dispatched
 		else {
@@ -144,7 +153,9 @@ public class Dispatcher {
 			getInstance().priorityQueue.add(telegram);
 		}
 	}
-	*/
+
+
+
 	
 	
 	

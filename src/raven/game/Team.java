@@ -175,14 +175,14 @@ public class Team extends BaseGameEntity implements ITeam
 		//	----It should ignore new hit by notifications until said target
 		//  ---- is dead, or 2 seconds
 		//
+		Log.info("Team", "Received Broadcast");	
 		Iterator iterator = teamBots.iterator();
 		while(iterator.hasNext()){
 			
-//			(((RavenBot)iterator.next())).ID()
-			//.handleMessage(msg);
+			((IRavenBot)iterator.next()).handleMessage(msg);
 			
 		}
-		
+
 		
 		
 		

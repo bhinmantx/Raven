@@ -29,9 +29,13 @@ public class EntityManager {
 	
 	private Map<Integer, BaseGameEntity> entityMap = new HashMap<Integer, BaseGameEntity>();
 	private Map<Integer, IRavenBot> botMap = new HashMap<Integer, IRavenBot>();
+	
 	///Why teamList and listOfTeamID's? Because arraylists do not support
 	///primitive types, and I need something I can iterate through
 	///not a hashmap
+	//TODO Do we really need this redundancy? Why can't teams get a regular ID?
+	///The game world currently tracks the bots, why can't it track the teams as well?
+	
 	private static Map<Integer, Team> teamList = new HashMap<Integer, Team>();
 	private static ArrayList<Team> listOfTeamIDs = new ArrayList<Team>();
 	
