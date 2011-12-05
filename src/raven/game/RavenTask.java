@@ -7,9 +7,9 @@ package raven.game;
  */
 public enum RavenTask {
 TASK_CAPTAIN (1,.5,.5,.5,.5,.5,1),
-TASK_BODYGUARD (1,.5,.5,.5,.5,.5,0),
-TASK_SNIPER (.2,.2,.2,.2,2,1,3),
-TASK_NONE (0,0,0,0,0,0,0);
+TASK_BODYGUARD (1,.5,.5,.5,.5,.5,1),
+TASK_SNIPER (1,0.0,0.0,1,.5,.5,.5),
+TASK_NONE (1,.5,.5,.5,.5,.5,1);
 
 RavenTask(double health,double shotgun,double rocket,double rail,double explore,double attack,double hunt){
 	this.HealthBias = health;

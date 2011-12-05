@@ -52,7 +52,7 @@ public class Scoreboard extends JFrame {
 		this.getContentPane().add(score0Panel, BorderLayout.NORTH); 
 		this.getContentPane().add(score1Panel, BorderLayout.SOUTH); 
 		
-		this.getContentPane().setLayout(new GridLayout(1,numberOfTeams));
+		//this.getContentPane().setLayout(new GridLayout(1,numberOfTeams));
 	
  addWindowListener(new WindowAdapter() {
 	 
