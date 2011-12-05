@@ -469,6 +469,8 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 				Dispatcher.dispatchMsg(Dispatcher.SEND_MSG_IMMEDIATELY, ID(),
 						msg.senderID, RavenMessage.MSG_YOU_GOT_ME_YOU_SOB,
 						Dispatcher.NO_ADDITIONAL_INFO);
+				if(this.isCaptain)
+				EntityManager.incrementScore(EntityManager.getBotFromID(msg.senderID).getTeam().ID());
 			}
 		if (this.isCaptain){
 				///If this bot is not dead, and is the captain, then let the team know the captain

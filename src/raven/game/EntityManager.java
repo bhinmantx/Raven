@@ -7,15 +7,17 @@ import java.util.Map;
 import raven.game.interfaces.IRavenBot;
 import raven.game.interfaces.ITeam;
 import raven.utils.Log;
-
+import raven.ui.Scoreboard;
 
 public class EntityManager {
 	private static class EntityManagerHolder {
 		public static final EntityManager INSTANCE = new EntityManager();
+		
 	}
 	
 	private static int availableID = 0;
 	static volatile int lastTeamAssigned = 0;
+	Scoreboard score;
 
 	
 	public static synchronized int getAvailableID() {
@@ -59,13 +61,14 @@ public class EntityManager {
 				return listOfTeamIDs.get(0);
 			}
 
-
+			
 	}
 	
 	
 	
 	private EntityManager() {
-
+	
+		score = new Scoreboard();
 		
 	}
 	
@@ -108,6 +111,9 @@ public class EntityManager {
 		getInstance().entityMap.clear();
 	}
 
+	public static void incrementScore(Integer teamID){
+		getInstance().score.scoreUpdate(teamID);
+	}
 
 
 }

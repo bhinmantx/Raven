@@ -44,6 +44,13 @@ import raven.utils.Log;
 			}
 			
 		}
+		
+		
+		public RavenTask getFuzzyNewTask(){
+			
+			return RavenTask.TASK_BODYGUARD;
+		
+		}
 
 		
 		
