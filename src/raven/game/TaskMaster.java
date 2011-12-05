@@ -15,31 +15,13 @@ import raven.utils.Log;
 			public static final TaskMaster TM_INSTANCE = new TaskMaster();
 		}
 		
-		
-//		protected TaskMaster(int id, Team team) {
-//			super(id);
-//			owningTeam = team;
-//			// TODO Auto-generated constructor stub
-//		}
+
 		
 		public static TaskMaster getMaster() {
 			return TaskMasterHolder.TM_INSTANCE;
 		}
 		
-		
 
-//		@Override
-//		public void render() {
-//			// TODO Auto-generated method stub
-			
-//		}
-		
-		
-		
-		
-		
-		
-		
 		
 		public RavenTask getNewTask(RavenTask curTask, Team team)
 		{

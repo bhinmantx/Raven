@@ -138,7 +138,7 @@ public class Team extends BaseGameEntity implements ITeam
 	
 	@Override
 	public boolean handleMessage(Telegram msg) {
-		Log.info("Team", "Received Broadcast");	
+		Log.debug("Team", "Received Broadcast");	
 		Iterator<IRavenBot> iterator = teamBots.iterator();
 		while(iterator.hasNext()){
 			
