@@ -2,15 +2,6 @@ package raven.game;
 
 import raven.game.*;
 import raven.utils.Log;
-//import raven.game.EntityManager.EntityManagerHolder;
-
-
-
-
-//public class EntityManager {
-//	private static class EntityManagerHolder {
-//		public static final EntityManager INSTANCE = new EntityManager();
-//	}
 
 
 
@@ -18,7 +9,7 @@ import raven.utils.Log;
  * @author Brendan
  *
  */
-//public class TaskMaster extends BaseGameEntity {
+
 public class TaskMaster {
 	
 	private static class TaskMasterHolder{
@@ -60,12 +51,14 @@ public class TaskMaster {
 	 */
 	public RavenTask getNewTask(Team botTeam, RavenTask cur_task){
 		
+		///TODO -  This is where iterators could go in order to create 
+		///Different tasks
 		
 		if (!botTeam.teamHasCaptain()){
 		Log.info("TASKMASTER", " returning TASK_CAPTAIN ");
 		return RavenTask.TASK_CAPTAIN;
 		}
-		else
+		else 
 			return RavenTask.TASK_BODYGUARD;
 		
 		//return cur_task;

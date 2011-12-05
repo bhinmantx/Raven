@@ -28,8 +28,10 @@ public class Team extends BaseGameEntity implements ITeam
 	private static int currValidColor = 0;
 	private IRavenBot teamCaptain = null;
 	
-	////A list of bots on the team, should be references, I'll ask
+	////A list of bots on the team
 	private	List<IRavenBot> teamBots = new ArrayList<IRavenBot>();
+	////Current Active roles, for Task Assignments
+	private List<Integer> activeRoles = new ArrayList<Integer>();
 	
 	///We need a valid location for spawning
 	private ArrayList<Vector2D> teamSpawnPoints;
@@ -39,28 +41,27 @@ public class Team extends BaseGameEntity implements ITeam
 	//Goal queue? 
 	//private GoalThink teamBrain;
 	
+	///TaskMaster Related
+	///We have a list of all tasks, there should be a way to use that to create a list of active tasks.
+	int bodyguardsActive = 0;
+	int snipersActive = 0;
 
 	
 	
 	public Team(int id)
 	{
 			super(id);
-			//Can I just modify this constructor?
+
 			
 			//Just so we don't get some null point exception
 			//Just for testing.
 			//teamSpawnPoints.add( new Vector2D(0,0));
-			setEntityType(RavenObject.TEAM);
-			//teamBrain = new GoalThink(this);
+
 			
 			/////Setting team ID before we register with entity manager.
 			teamID = id; 
-			//team ID = currValidTeamID;
-			//currValidTeamID++;
 			setEntityType(RavenObject.TEAM);
-			
-			
-			
+	
 			/////we want this to register a team by ID but let's
 			/////just get the teams working
 			EntityManager.registerEntity(this);
@@ -72,7 +73,7 @@ public class Team extends BaseGameEntity implements ITeam
 			//the last team color was zero (red) and if so, 
 			//the new one is blue.
 
-///TODO Support for additional team colors
+			///TODO Support for additional team colors
 			 if (currValidColor == 0)
 			 {
 			 teamColor = new Color(250,0,0);
@@ -97,41 +98,30 @@ public class Team extends BaseGameEntity implements ITeam
 	//Also using "draft" and drop instead of "add/remove"
 	//to avoid confusion
 	public void draftBot(IRavenBot draftee) {
-	//Ask if this works as a reference
-		/*
-		if (teamBots.isEmpty()){
-			
-			draftee.becomeCaptain();
-			Log.info("TEAM", "Registered Captain of team " + draftee.getTeam().ID());
-			this.teamCaptain = draftee;
-		}
-		*/
 		teamBots.add(draftee);
 		Log.info("Drafted");
 	}
 	
-	
-	
-	
+
 	public boolean teamHasCaptain(){
 		return (this.teamCaptain != null);
 			
 	}
-	
-	
-	
-	
-	
-	
+
 	///We may want to add a clear/remove team association. 
 	public void removeBotFromTeam(IRavenBot draftee){
+		
+		if (draftee.getTask() == RavenTask.TASK_BODYGUARD)
+			bodyguardsActive--;
+		else if (draftee.getTask() == RavenTask.TASK_CAPTAIN)
+			teamCaptain = null;
+		else if (draftee.getTask() == RavenTask.TASK_SNIPER)
+			snipersActive--;
+		///TODO There HAS to be a way to use the enum to populate a list with what's active.
 		teamBots.remove(draftee);
+		
 	}
 
-	
-
-
-	
 	@Override
 	public void render()
 	{}
@@ -182,14 +172,40 @@ public class Team extends BaseGameEntity implements ITeam
 	}
 	
 	
-	public RavenTask getNewTask(){
+	/**
+	 * This is meant to replace the TaskMaster singleton 
+	 * class, as there's too much cohesion and information that
+	 * needs to pass between Team and TaskMaster. 
+	 * Better just to add functions to Team. 
+	 * @param curTask
+	 * @return
+	 */
+	public RavenTask getNewTask(RavenTask curTask)
+	{
+		//TODO We need to find out how to use that RavenTask Enum to populate a list or, something. 
+		if (!teamHasCaptain()){
+			return RavenTask.TASK_CAPTAIN;
+		}
+		else if (bodyguardsActive >= 2){
+			snipersActive++;
+			return RavenTask.TASK_SNIPER;
+		}
+		else{
+			bodyguardsActive++;
+		return RavenTask.TASK_BODYGUARD;
+		}
 		
-		return (TaskMaster.getMaster()).getNewTask(this);
-		
-		//return RavenTask.TASK_NONE;
-//		return RavenTask.TASK_CAPTAIN;
 	}
 
+	
+	
+	public RavenTask getNewTask(){
+		
+//		return (TaskMaster.getMaster()).getNewTask(this);
+		return getNewTask(RavenTask.TASK_NONE);
+}
+
+	
 
 
 	public void CaptainIsNow(RavenBot ravenBot) {

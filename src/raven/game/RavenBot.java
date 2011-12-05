@@ -714,6 +714,9 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		setPos(pos);
 		weaponSys.initialize();
 		restoreHealthToMaximum();
+		if (curTask != RavenTask.TASK_CAPTAIN)
+			curTask = getTeam().getNewTask();
+			
 	}
 
 	/** returns true if this bot is ready to test against all triggers */

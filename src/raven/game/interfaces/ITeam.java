@@ -5,7 +5,9 @@ package raven.game.interfaces;
 
 import java.awt.Color;
 
+import raven.game.RavenBot;
 import raven.game.RavenObject;
+import raven.game.RavenTask;
 import raven.game.messaging.Telegram;
 import raven.goals.GoalThink;
 import raven.math.Vector2D;
@@ -18,6 +20,8 @@ public interface ITeam {
 
 
 	//public GoalThink getBrain();
+	public RavenTask getNewTask();
+	public void CaptainIsNow(RavenBot bot);
 	public Color getTeamColor();
 	public Color getCaptainColor();
 	public boolean handleMessage(Telegram msg);

@@ -297,6 +297,7 @@ public class RavenGame {
 				if (bot.equals(selectedBot)) {
 					selectedBot = null;
 				}
+				bot.getTeam().removeBotFromTeam(bot);
 				notifyAllBotsOfRemoval(bot);
 				bots.remove(bot);
 			}
