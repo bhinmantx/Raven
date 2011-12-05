@@ -16,6 +16,8 @@ public class Scoreboard extends JFrame {
 	// TODO This is a hack hack hack hack!!! Fix!
 	Scoreboard thisboard = this;
 	
+	Integer numberOfTeams = 0;
+	
 	
 
 	private JTextField score0 = new JTextField(); 
@@ -49,9 +51,11 @@ public class Scoreboard extends JFrame {
 		
 		this.getContentPane().add(score0Panel, BorderLayout.NORTH); 
 		this.getContentPane().add(score1Panel, BorderLayout.SOUTH); 
+		
+		this.getContentPane().setLayout(new GridLayout(1,numberOfTeams));
 	
  addWindowListener(new WindowAdapter() {
-////TODO make this some kind of event call to abstract the class a bit more	 
+	 
 public void windowClosing(WindowEvent e) {
  Log.info("Closing Scoreboard is a bad idea");
 
@@ -63,7 +67,10 @@ public void windowClosing(WindowEvent e) {
 
 	 }
 	
-
+	
+public void addTeamScorePanel(Integer TeamID, Color teamColor ){
+	
+}
 
 
 	 

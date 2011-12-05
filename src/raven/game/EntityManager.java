@@ -110,6 +110,7 @@ public class EntityManager {
 		Log.trace("ENTITY MANAGER", "Cleared entity listing"); 
 		getInstance().entityMap.clear();
 	}
+	
 
 	public static void incrementScore(Integer teamID){
 		getInstance().score.scoreUpdate(teamID);

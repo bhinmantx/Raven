@@ -25,27 +25,30 @@ import raven.utils.Log;
 		
 		public RavenTask getNewTask(RavenTask curTask, Team team)
 		{
-			//TODO We need to find out how to use that RavenTask Enum to populate a list  
+			  
 			if (!team.teamHasCaptain() || (curTask == RavenTask.TASK_CAPTAIN)){
 				return RavenTask.TASK_CAPTAIN;
 			}
-			Log.info("Team Tasks", ("The Current task is: " + curTask));
+			Log.debug("Team Tasks", ("The Current task is: " + curTask));
 			team.getTaskTable().put(curTask,(team.getTaskTable().get(curTask)-1));
 			
 			/////On to assignments!
 			if (team.getTaskTable().get(RavenTask.TASK_BODYGUARD) > 2){
-				Log.info("Team Tasks", "Sniper Task Given");
+				Log.debug("Team Tasks", "Sniper Task Given");
 				return RavenTask.TASK_SNIPER;
 			}
 			else{
 				team.getTaskTable().put(RavenTask.TASK_BODYGUARD,(team.getTaskTable().get(RavenTask.TASK_BODYGUARD)+1));
-				Log.info("Team Tasks", "Body Guard Task Given");
+				Log.debug("Team Tasks", "Body Guard Task Given");
 			return RavenTask.TASK_BODYGUARD;
 			}
 			
 		}
 		
-		
+		/**
+		 * Fuzzy Logic version of the getNewTask
+		 * @return
+		 */
 		public RavenTask getFuzzyNewTask(){
 			
 			return RavenTask.TASK_BODYGUARD;
