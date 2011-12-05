@@ -186,9 +186,9 @@ public RavenTask getNewTask(RavenTask curTask){
 	return TaskMaster.getMaster().getNewTask(curTask, this);
 }
 
-public RavenTask getNewTask(){
-	return getNewTask(RavenTask.TASK_NONE);
-}
+//public RavenTask getNewTask(){
+//	return getNewTask(RavenTask.TASK_NONE);
+//}
 	
 
 	

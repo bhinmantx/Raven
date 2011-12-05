@@ -20,7 +20,7 @@ public interface ITeam {
 
 
 	//public GoalThink getBrain();
-	public RavenTask getNewTask();
+	public RavenTask getNewTask(RavenTask curTask);
 	public void CaptainIsNow(RavenBot bot);
 	public Color getTeamColor();
 	public Color getCaptainColor();

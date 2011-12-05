@@ -29,10 +29,11 @@ import raven.utils.Log;
 			if (!team.teamHasCaptain() || (curTask == RavenTask.TASK_CAPTAIN)){
 				return RavenTask.TASK_CAPTAIN;
 			}
-			else 
-				team.getTaskTable().put(curTask,(team.getTaskTable().get(curTask)-1));
+			Log.info("Team Tasks", ("The Current task is: " + curTask));
+			team.getTaskTable().put(curTask,(team.getTaskTable().get(curTask)-1));
+			
 			/////On to assignments!
-			if (team.getTaskTable().get(RavenTask.TASK_BODYGUARD) >= 2){
+			if (team.getTaskTable().get(RavenTask.TASK_BODYGUARD) > 2){
 				Log.info("Team Tasks", "Sniper Task Given");
 				return RavenTask.TASK_SNIPER;
 			}

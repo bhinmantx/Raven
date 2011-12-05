@@ -259,7 +259,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		Log.info("BotConstructor", "Bot team is" + this.team.ID());
 		//We want entity manager to handle this later but for now just let team know you're joining
 		team.draftBot(this);
-		curTask = this.team.getNewTask();
+		curTask = this.team.getNewTask(curTask);
 		if(curTask == RavenTask.TASK_CAPTAIN)
 		{
 			this.becomeCaptain();
@@ -715,7 +715,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		weaponSys.initialize();
 		restoreHealthToMaximum();
 		if (curTask != RavenTask.TASK_CAPTAIN)
-			curTask = getTeam().getNewTask();
+			curTask = getTeam().getNewTask(curTask);
 			
 	}
 
