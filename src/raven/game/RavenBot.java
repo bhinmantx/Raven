@@ -473,7 +473,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 				///If this bot is not dead, and is the captain, then let the team know the captain
 				///is under attack
 			Dispatcher.dispatchMsg(Dispatcher.SEND_MSG_IMMEDIATELY, ID(), this.getTeam(), RavenMessage.MSG_CAPTAIN_ATTACKED_BY, msg.senderID);
-			Log.info("RavenBot", "Captain Under Attack!");
+		//	Log.info("RavenBot", "Captain Under Attack!");
 			}
 
 			return true;
@@ -814,16 +814,11 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 	@Override
 
 	/**
-	 * Returns a string if it's a captain or a drone
+	 * Returns current task
 	 * 
 	 */
-	public String getRole() {
-		if(this.isCaptain)
-		{
-			return "Captain";
-		}
-		else return "Drone";
-
+	public RavenTask getTask() {
+		return curTask;
 	}
 
 

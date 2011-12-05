@@ -7,6 +7,7 @@ import raven.game.RavenObject;
 import raven.game.RavenSensoryMemory;
 import raven.game.RavenSteering;
 import raven.game.RavenTargetingSystem;
+import raven.game.RavenTask;
 import raven.game.RavenWeaponSystem;
 import raven.game.Team;
 import raven.game.messaging.Telegram;
@@ -17,7 +18,7 @@ public interface IRavenBot {
 	
 	public Team getTeam();
 	public void becomeCaptain();
-	public String getRole();
+	RavenTask getTask();
 	public boolean isAlive();
 	public boolean isReadyForTriggerUpdate();
 	public Vector2D pos();
@@ -59,5 +60,6 @@ public interface IRavenBot {
 	public Vector2D heading();
 	public boolean handleMessage(Telegram msg);
 	public void setBrain(GoalThink think);
+	
 	
 }

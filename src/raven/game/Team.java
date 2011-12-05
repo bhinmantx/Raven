@@ -18,30 +18,6 @@ import raven.game.TaskMaster;
 import java.util.ArrayList;
 
 
-/* To Do
-//List bots	
-//List spawn points
-//process team goal (make new goals for teams)
-//Handle messages
- * Other stuff- kill entity manager
- * make "loose bots"? Ask
- * add to iraven interface (?) In Progress
- *
- * TODO 
- * Teams are based on a captain
- * protect captain
- * Find Captain
- * Scatter(Leader is dead)
- * Kill enemy leader
- * Murder defenders
- * We need a brain/goal to "Stay close to captain"
- * We need a message handler to deal with "Score increased"
- * 
- * Just different flavors of pursuit, or evade.
- * Also there needs to be a way to tell the leader to move more slowly
- * have more hit points, etc.  
- */
-
 
 public class Team extends BaseGameEntity implements ITeam
 {
@@ -162,31 +138,13 @@ public class Team extends BaseGameEntity implements ITeam
 	
 	@Override
 	public boolean handleMessage(Telegram msg) {
-		//TODO
-		// We need to implement the ability to handle a 
-		// broad or multicast.
-		// we could treat every message to the team as multicast
-		// "Captain_Dead"
-		// "Captain has spawned at Location"
-		// "Captain's current Location"
-		// "Captain being hit by:"
-		//	----This message accepts a hit notification from Captain
-		//	----It should let the Drones know to target said bot until dead
-		//	----It should ignore new hit by notifications until said target
-		//  ---- is dead, or 2 seconds
-		//
 		Log.info("Team", "Received Broadcast");	
-		Iterator iterator = teamBots.iterator();
+		Iterator<IRavenBot> iterator = teamBots.iterator();
 		while(iterator.hasNext()){
 			
 			((IRavenBot)iterator.next()).handleMessage(msg);
 			
-		}
-
-		
-		
-		
-		
+		}		
 	return true;
 	}
 
@@ -195,23 +153,7 @@ public class Team extends BaseGameEntity implements ITeam
 	public Vector2D getTeamSpawnPoint(){
 		return teamSpawnPoints.get(0);
 	}
-	
-	
-	
-	/*
-	public RavenBot getCaptain()
-	{
-		return null;
-		
-	}
-	*/
-	
-	////We need new goals/brains
-	/*
-	public GoalThink getBrain() {
-		return teamBrain;
-	}
-	*/
+
 	public Color getTeamColor(){
 		return teamColor;
 	}
