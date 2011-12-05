@@ -247,6 +247,12 @@ public class Team extends BaseGameEntity implements ITeam
 		//return RavenTask.TASK_NONE;
 //		return RavenTask.TASK_CAPTAIN;
 	}
+
+
+
+	public void CaptainIsNow(RavenBot ravenBot) {
+		teamCaptain = ravenBot;
+	}
 	
 }
 

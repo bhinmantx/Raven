@@ -36,7 +36,7 @@ var NumTeams = 2;
 //this is the maximum number of search cycles allocated to *all* current path
 // planning searches per update
 var MaxSearchCyclesPerUpdateStep = 1000;
-var StartMap = "maps/moreWeaponsDefault.raven";
+var StartMap = "maps/Default.raven";
 
 //cell space partitioning defaults
 var NumCellsX = 10;

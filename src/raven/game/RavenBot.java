@@ -650,6 +650,7 @@ public class RavenBot extends MovingEntity implements IRavenBot {
 		this.maxHealth = (maxHealth*10);
 		this.health = (health * 10);
 		Log.info("TEAM", "Registered Captain of team " + this.getTeam().ID());
+		getTeam().CaptainIsNow(this);
 	}
 
 	/**
